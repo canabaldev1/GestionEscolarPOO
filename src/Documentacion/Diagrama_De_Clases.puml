@@ -1,0 +1,436 @@
+@startuml DiagramaDeClases
+title Diagrama de Clases - Sistema de Gestión Escolar
+
+class Usuario {
+  # id: String
+  # nombres: String
+  # apellidos: String
+  # fechaNacimiento: LocalDate
+  # contrasena: String
+  # direccion: String
+  # email: String
+  # telefono: String
+}
+
+class Alumno {
+  - nombreAcudiente: String
+  - apellidoAcudiente: String
+  - parentesco: ParentescoAcudiente
+  - matriculas: List<Matricula>
+  - grupos: List<AsignacionAlumnoGrupo>
+  - sesiones: List<AsistenciaSesion>
+  - clases: List<DesempeñoAlumno>
+  - serviciosComplementarios: List<AsignacionAlumnoServicio>
+}
+
+enum ParentescoAcudiente {
+  PADRE
+  MADRE
+  TUTOR_LEGAL
+  HERMANO
+  HERMANA
+  ABUELO
+  ABUELA
+  TIO
+  TIA
+  OTRO
+}
+
+class Empleado {
+  # profesion: String
+  # numeroCuentaBancaria: String
+  # tipoCuentaBancaria: TipoCuenta
+  # bancoAsociado: String
+  # fechaIngreso: LocalDate
+  # estado: EstadoEmpleado
+  # contratos: List<Contrato>
+}
+
+enum TipoCuenta {
+  AHORROS
+  CORRIENTE
+}
+
+enum EstadoEmpleado {
+  ACTIVO
+  INACTIVO
+  VACACIONES
+  LICENCIA
+  SUSPENSION
+  DESVINCULADO
+  RETIRADO
+  JUBILADO
+}
+
+
+class Profesor {
+  # titulacionAcademica: String
+}
+
+class ProfesorRegular {
+  - clases: List<Clase>
+  - grupo: GrupoRegular
+}
+
+class ProfesorInfantil {
+  - grupo: GrupoInfantil
+}
+
+class Administrativo {
+  - areaAdministrativa: AreaAdministrativa
+}
+
+enum AreaAdministrativa{
+  CONTABILIDAD
+  RECEPCION
+  RECURSOS_HUMANOS
+  JURIDICO
+  MANTENIMIENTO
+}
+
+class CicloAcademico {
+  - id: String
+  - año: int
+  - fechaInicio: LocalDate
+  - fechaFin: LocalDate
+  - estado: EstadoCicloAcademico
+  - cantidadSemanas: int
+  - matriculas: List<Matricula>
+  - contratos: List<Contrato>
+  - grupos: List<Grupo>
+  - clases: List<Clase>
+  - serviciosComplementarios: List<ServicioComplementario>
+}
+
+enum EstadoCicloAcademico {
+  EN_PROYECCION
+  ACTUAL
+  FINALIZADO
+}
+
+class Matricula {
+  - id: String
+  - fechaMatricula: LocalDateTime
+  - estado: EstadoMatricula
+  - fechaPago: LocalDateTime
+  - valorMatricula: int
+  - valorMensualidad: int
+  - observaciones: String
+  - alumno: Alumno
+  - cicloAcademico: CicloAcademico
+  - curso: Curso
+  - beca: Beca
+}
+
+enum EstadoMatricula {
+  PENDIENTE
+  VIGENTE
+  FINALIZADA
+  CANCELADA
+}
+
+class Contrato {
+  - id: String
+  - tipo: TipoContrato
+  - fechaInicio: LocalDate
+  - fechaFin: LocalDate
+  - valorSalario: int
+  - estado: EstadoContrato
+  - observaciones: String
+  - cargo: String
+  - empleado: Empleado
+  - cicloAcademico: CicloAcademico
+}
+
+enum TipoContrato {
+  PLANTA
+  OPS
+}
+
+enum EstadoContrato {
+  EN_PROYECCION
+  VIGENTE
+  CUMPLIDO
+  FINALIZADO_ANTICIPADO
+}
+
+class NivelEducativo {
+  - id: String
+  - nombre: String
+  - descripcion: String
+  - tipo: TipoNivelEducativo
+  - cursos: List<Curso>
+  - modalidadesDisponibles: List<Modalidad>
+}
+
+enum TipoNivelEducativo {
+  INFANTIL
+  PRIMARIA
+  SECUNDARIA
+  BACHILLERATO
+}
+
+class Asignatura {
+  - id: String
+  - nombre: String
+  - descripcion: String
+  - prioridad: PrioridadAsignatura
+  - clases: List<Clase>
+}
+
+enum PrioridadAsignatura {
+  BAJA
+  MEDIA
+  ALTA
+}
+
+class Curso {
+  - id: String
+  - nombre: String
+  - nivelEducativo: NivelEducativo
+  - grupos: List<Grupo>
+  - modalidad: Modalidad
+  - matriculas: List<Matricula>
+}
+
+class Grupo {
+  # id: String
+  # nombre: String
+  # curso: Curso
+  # alumnos: List<AsignacionAlumnoGrupo>
+  # aula: Aula
+  # cicloAcademico: CicloAcademico
+}
+
+class GrupoRegular {
+  - profesorEncargado: ProfesorRegular
+  - clases: List<Clase>
+}
+
+class GrupoInfantil {
+  - profesorEncargado: ProfesorInfantil
+  - profesorAsistente: ProfesorInfantil
+}
+
+class Modalidad {
+  - id: String
+  - nombre: String
+  - descripcion: String
+  - nivelEducativo: NivelEducativo
+  - cursos: List<Curso>
+}
+
+class Clase {
+  - id: String
+  - grupo: Grupo
+  - profesor: Profesor
+  - bloquesHorarios: List<HorarioClase>
+  - asignatura: Asignatura
+  - sesiones: List<Sesion>
+  - cicloAcademico: CicloAcademico
+  - alumnos: List<DesempeñoAlumno>
+}
+
+class Sesion {
+  - id: String
+  - fecha: LocalDate
+  - semana: int
+  - bloqueHorario: BloqueHorario
+  - alumnos: List<AsistenciaSesion>
+  - aula: Aula
+  - clase: Clase
+}
+
+class BloqueHorario {
+  - id: String
+  - dia: DiaSemana
+  - horaInicio: LocalTime
+  - horaFin: LocalTime
+  - clases: List<HorarioClase>
+  - sesiones: List<Sesion>
+}
+
+enum DiaSemana {
+  LUNES
+  MARTES
+  MIERCOLES
+  JUEVES
+  VIERNES
+  SABADO
+  DOMINGO
+}
+
+class Aula {
+  - id: String
+  - nombre: String
+  - capacidad: int
+  - ubicacion: String
+  - grupos: List<Grupo>
+  - sesiones: List<Sesion>
+}
+
+class ServicioComplementario {
+  - id: String
+  - nombre: String
+  - descripcion: String
+  - valor: double
+  - fechaInicio: LocalDate
+  - fechaFin: LocalDate
+  - estado: EstadoServicioComplementario
+  - alumnosBeneficiados: List<AsignacionAlumnoServicio>
+  - cicloAcademico: CicloAcademico
+}
+
+enum EstadoServicioComplementario {
+  DISPONIBLE
+  NO_DISPONIBLE
+}
+
+class Beca {
+  - id: String
+  - nombre: String
+  - descripcion: String
+  - valorDescuento: double
+  - observaciones: String
+  - otorgadaPor: String
+  - estado: EstadoBeca
+  - matricula: Matricula
+}
+
+enum EstadoBeca {
+  DISPONIBLE
+  SOLICITADA
+  APROBADA
+  RECHAZADA
+  ACTIVA
+  CANCELADA
+  FINALIZADA
+  VENCIDA
+}
+
+class AsignacionAlumnoGrupo {
+  - id: String
+  - alumno: Alumno
+  - grupo: Grupo
+  - fechaInicioInscripcion: LocalDateTime
+  - fechaFinInscripcion: LocalDateTime
+  - estado: EstadoAsignacionGrupo
+}
+
+enum EstadoAsignacionGrupo {
+  ACTIVA
+  CANCELADA
+  FINALIZADA
+}
+
+class AsistenciaSesion {
+  - id: String
+  - alumno: Alumno
+  - sesion: Sesion
+  - presente: boolean
+  - observaciones: String
+}
+
+class DesempeñoAlumno {
+  - id: String
+  - observaciones: String
+  - notaPrimerTrimestre: double
+  - notaSegundoTrimestre: double
+  - notaTercerTrimestre: double
+  - estado: EstadoDesempenoEstudiante
+}
+
+enum EstadoDesempenoEstudiante {
+  EN_CURSO
+  POR_HABILITAR
+  APROBADO
+  DESAPROBADO
+}
+
+class AsignacionAlumnoServicio {
+  - id: String
+  - alumno: Alumno
+  - servicioComplementario: ServicioComplementario
+  - fechaInicioAsignacion: LocalDate
+  - fechaFinAsignacion: LocalDate
+  - estado: EstadoAsignacionServicio
+}
+
+enum EstadoAsignacionServicio {
+  ACTIVA
+  CANCELADA
+  FINALIZADA
+}
+
+class HorarioClase {
+  - id: String
+  - clase: Clase
+  - bloqueHorario: BloqueHorario
+}
+
+' Relaciones de herencia
+
+Usuario <|-- Alumno : tipoDe
+Usuario <|-- Empleado : tipoDe
+
+Empleado <|-- Profesor : tipoDe
+Empleado <|-- Administrativo : tipoDe
+
+Profesor <|-- ProfesorRegular : tipoDe
+Profesor <|-- ProfesorInfantil : tipoDe
+
+Grupo <|-- GrupoRegular : tipoDe
+Grupo <|-- GrupoInfantil : tipoDe
+
+' Vinculación de usuarios a la institución
+
+Alumno "1" -- "1..*" Matricula : tiene
+Empleado "1" -- "0..*" Contrato : tiene
+Matricula "0..*" -- "1" CicloAcademico : pertenece
+Contrato "0..*" -- "1" CicloAcademico : pertenece
+
+' Organización de las materias
+
+NivelEducativo "1" -- "*" Curso : tiene
+Curso "1" -- "*" Grupo : tiene
+Grupo "0..*" -- "*" Alumno
+(Alumno, Grupo) .. AsignacionAlumnoGrupo : asignación
+
+GrupoRegular "0..1" -- "1" ProfesorRegular : encargado
+ProfesorRegular "1" -- "0..*" Clase : asignación
+GrupoInfantil "0..1" -- "1" ProfesorInfantil : encargado
+GrupoInfantil "0..1" -- "1" ProfesorInfantil : asistente
+
+GrupoRegular "1" -- "*" Clase : tiene
+Clase "0..*" -- "1..*" BloqueHorario : Horario
+(Clase, BloqueHorario) .. HorarioClase : organización
+Sesion "0..*" -- "1" BloqueHorario : Horario
+Sesion "*" -- "*" Alumno
+(Sesion, Alumno) .. AsistenciaSesion : registro
+
+Grupo "0..*" -- "1" Aula : Asignacion
+Sesion "*" -- "1" Aula : Asignacion
+Asignatura "1" -- "*" Clase : tiene
+Clase "1" -- "*" Sesion : tiene
+NivelEducativo "1" -- "0..*" Modalidad : opcionesDeCategoria
+Curso "*" -- "0..1" Modalidad : categoriaAsociada
+Matricula "0..*" -- "1" Curso : cursoInscrito
+
+Grupo "*" -- "1" CicloAcademico : pertenece
+Clase "*" -- "1" CicloAcademico : pertenece
+
+Clase "*" -- "*" Alumno
+(Clase, Alumno) .. DesempeñoAlumno : registro
+
+' Servicios complementarios
+
+Alumno "0..*" -- "0..*" ServicioComplementario
+(Alumno, ServicioComplementario) .. AsignacionAlumnoServicio : asignacion
+
+CicloAcademico "1" -- "0..*" ServicioComplementario : pertenece
+
+' Becas
+
+Matricula "0..1" -- "0..1" Beca : tiene
+
+@enduml
