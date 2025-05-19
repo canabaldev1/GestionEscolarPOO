@@ -1,5 +1,24 @@
 package carloscanabal;
 
+import Crud.AdministrativoCrud;
+import Crud.AlumnoCrud;
+import Crud.AsignaturaCrud;
+import Crud.AulaCrud;
+import Crud.BecaCrud;
+import Crud.BloqueHorarioCrud;
+import Crud.CicloAcademicoCrud;
+import Crud.ClaseCrud;
+import Crud.ContratoCrud;
+import Crud.CursoCrud;
+import Crud.GrupoInfantilCrud;
+import Crud.GrupoRegularCrud;
+import Crud.MatriculaCrud;
+import Crud.ModalidadCrud;
+import Crud.NivelEducativoCrud;
+import Crud.ProfesorInfantilCrud;
+import Crud.ProfesorRegularCrud;
+import Crud.ServicioComplementarioCrud;
+import Crud.SesionCrud;
 import Dominio.Administrativo;
 import Dominio.Alumno;
 import Dominio.AsignacionAlumnoGrupo;
@@ -854,6 +873,1729 @@ public class Principal {
         System.out.println(horarioClase1);
         System.out.println(horarioClase2);
 
+        
+        
+        
+        System.out.println("\033[1;31m-------------------------------------------------------------------------");
+        System.out.println("\033[1;31m---------------------------------- CRUD ---------------------------------");
+        System.out.println("\033[1;31m-------------------------------------------------------------------------");
+
+        System.out.println("\n----- ALUMNOS -----\n");
+
+        // Agrego al alumno 1 a la lista
+        try {
+            AlumnoCrud.agregar(alumno1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Cuento la cantidad de alumnos que hay hasta el momento
+        try {
+            int total = AlumnoCrud.contarTodo();
+            System.out.println("La cantidad de alumnos es " + total);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco al alumno con su codigo
+        try {
+            Alumno alumnoBuscado = AlumnoCrud.buscar("AL001");
+            System.out.println(alumnoBuscado);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco al alumno 2, que no existe
+        try {
+            Alumno alumnoBuscado = AlumnoCrud.buscar("AL002");
+            System.out.println(alumnoBuscado);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Agrego al alumno 2 a la lista ahora si
+        try {
+            AlumnoCrud.agregar(alumno2);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Edito las propiedades de alumno 1, y lo actualizo en la lista
+        try {
+            alumno1.setNombres("Maggie");
+            alumno1.setEmail("pequenamaggie@udc.com");
+            alumno1.setFechaNacimiento(LocalDate.of(2024, 10, 10));
+
+            AlumnoCrud.editar(alumno1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo. Debe mostrar al alumno 1 modificado y al alumno 2
+        System.out.println(AlumnoCrud.listarTodo());
+
+        Thread.sleep(100);
+
+        // Ahora elimino al alumno 3, lo que no se puede porque no existe.
+        try {
+            AlumnoCrud.eliminar("AL003");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora si elimino al alumno 2.
+        try {
+            AlumnoCrud.eliminar("AL002");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo nuevamente, en esta ocacioón solo debe mostrar al alumno 1
+        System.out.println(AlumnoCrud.listarTodo());
+
+        System.out.println("\n----- ADMINISTRATIVOS -----\n");
+
+        // Agrego a administrativo 1 a la lista
+        try {
+            AdministrativoCrud.agregar(admin1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Cuento la cantidad de administrativos que hay hasta el momento
+        try {
+            int total = AdministrativoCrud.contarTodo();
+            System.out.println("La cantidad de administrativos es " + total);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a administrativo 1 con su codigo
+        try {
+            Administrativo administrativoBuscado = AdministrativoCrud.buscar("AD001");
+            System.out.println(administrativoBuscado);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a administrativo 2, que no existe
+        try {
+            Administrativo administrativoBuscado = AdministrativoCrud.buscar("AD002");
+            System.out.println(administrativoBuscado);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Agrego a administrativo 2 a la lista ahora si
+        try {
+            AdministrativoCrud.agregar(admin2);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Edito las propiedades de administrativo 1, y lo actualizo en la lista
+        try {
+            admin1.setEmail("leo-miami@udc.com");
+            admin1.setDireccion("Miami");
+            admin1.setContrasena("quemiraboboandapalla");
+
+            AdministrativoCrud.editar(admin1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo. Debe mostrar a administrativo 1 modificado y a administrativo 2
+        System.out.println(AdministrativoCrud.listarTodo());
+
+        Thread.sleep(100);
+
+        // Ahora elimino a administrativo 3, lo que no se puede porque no existe.
+        try {
+            AdministrativoCrud.eliminar("AD003");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora si elimino a administrativo 2.
+        try {
+            AdministrativoCrud.eliminar("AD002");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a administrativo 1
+        System.out.println(AdministrativoCrud.listarTodo());
+
+        System.out.println("\n----- PROFESOR REGULAR -----\n");
+
+        // Agrego a profesor regular 1 a la lista
+        try {
+            ProfesorRegularCrud.agregar(profesorRegular1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Cuento la cantidad de profesores regulares que hay hasta el momento
+        try {
+            int total = ProfesorRegularCrud.contarTodo();
+            System.out.println("La cantidad de profesores regulares es " + total);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a profesor regular 1 con su codigo
+        try {
+            ProfesorRegular profesoreRegularBuscado = ProfesorRegularCrud.buscar("PR001");
+            System.out.println(profesoreRegularBuscado);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a profesor regular 2, que no existe
+        try {
+            ProfesorRegular profesoreRegularBuscado = ProfesorRegularCrud.buscar("PR002");
+            System.out.println(profesoreRegularBuscado);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Agrego a profesor regular 2 a la lista ahora si
+        try {
+            ProfesorRegularCrud.agregar(profesorRegular2);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Edito las propiedades de profesor regular 1, y lo actualizo en la lista
+        try {
+            profesorRegular1.setContrasena("velocidaddelaluz");
+            profesorRegular1.setEmail("mc2@udc.com");
+
+            ProfesorRegularCrud.editar(profesorRegular1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo. Debe mostrar a profesor regular 1 modificado y a profesor regular 2
+        System.out.println(ProfesorRegularCrud.listarTodo());
+
+        Thread.sleep(100);
+
+        // Ahora elimino a profesor regular 3, lo que no se puede porque no existe.
+        try {
+            ProfesorRegularCrud.eliminar("PR003");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora si elimino a profesor regular 2.
+        try {
+            ProfesorRegularCrud.eliminar("PR002");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a profesor regular 1
+        System.out.println(ProfesorRegularCrud.listarTodo());
+
+        System.out.println("\n----- PROFESOR INFANTIL -----\n");
+
+        // Agrego a profesor infantil 1 a la lista
+        try {
+            ProfesorInfantilCrud.agregar(profesorInfantil1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Cuento la cantidad de profesores infantiles que hay hasta el momento
+        try {
+            int total = ProfesorInfantilCrud.contarTodo();
+            System.out.println("La cantidad de profesores infantiles es " + total);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a profesor infantil 1 con su codigo
+        try {
+            ProfesorInfantil profesorInfantilBuscado = ProfesorInfantilCrud.buscar("PI001");
+            System.out.println(profesorInfantilBuscado);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a profesor infantil 2, que no existe
+        try {
+            ProfesorInfantil profesorInfantilBuscado = ProfesorInfantilCrud.buscar("PI002");
+            System.out.println(profesorInfantilBuscado);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Agrego a profesor infantil 2 a la lista ahora si
+        try {
+            ProfesorInfantilCrud.agregar(profesorInfantil2);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Edito las propiedades de profesor infantil 1, y lo actualizo en la lista
+        try {
+            profesorInfantil1.setProfesion("Cientifico revolucionario");
+            profesorInfantil1.setContrasena("ManzanaCae1");
+
+            ProfesorInfantilCrud.editar(profesorInfantil1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo. Debe mostrar a profesor infantil 1 modificado y a profesor infantil 2
+        System.out.println(ProfesorInfantilCrud.listarTodo());
+
+        Thread.sleep(100);
+
+        // Ahora elimino a profesor infantil 3, lo que no se puede porque no existe.
+        try {
+            ProfesorInfantilCrud.eliminar("PI003");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora si elimino a profesor infantil 2.
+        try {
+            ProfesorInfantilCrud.eliminar("PI002");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a profesor infantil 1
+        System.out.println(ProfesorInfantilCrud.listarTodo());
+
+        System.out.println("\n----- AULA -----\n");
+
+        // Agrego a aula 1 a la lista
+        try {
+            AulaCrud.agregar(aula1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Cuento la cantidad de aulas que hay hasta el momento
+        try {
+            int total = AulaCrud.contarTodo();
+            System.out.println("La cantidad de aulas es " + total);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a aula 1 con su codigo
+        try {
+            Aula aulaBuscada = AulaCrud.buscar("AU-B205");
+            System.out.println(aulaBuscada);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a aula 2, que no existe
+        try {
+            Aula aulaBuscada = AulaCrud.buscar("AU-B206");
+            System.out.println(aulaBuscada);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Agrego a aula 2 a la lista ahora si
+        try {
+            AulaCrud.agregar(aula2);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Edito las propiedades de aula 1, y lo actualizo en la lista
+        try {
+            aula1.setNombre("Bloque C salon 101");
+            aula1.setUbicacion("Edificio C - Piso 1 - Salon 1");
+
+            AulaCrud.editar(aula1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo. Debe mostrar a aula 1 modificado y a aula 2
+        System.out.println(AulaCrud.listarTodo());
+
+        Thread.sleep(100);
+
+        // Ahora elimino a aula 3, lo que no se puede porque no existe.
+        try {
+            AulaCrud.eliminar("AU-B210");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora si elimino a aula 2.
+        try {
+            AulaCrud.eliminar("AU-B206");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a aula 1
+        System.out.println(AulaCrud.listarTodo());
+
+        System.out.println("\n----- NIVEL EDUCATIVO -----\n");
+
+        // Agrego a nivel educativo 1 a la lista
+        try {
+            NivelEducativoCrud.agregar(nivel1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Cuento la cantidad de niveles educativos que hay hasta el momento
+        try {
+            int total = NivelEducativoCrud.contarTodo();
+            System.out.println("La cantidad de niveles educativos es " + total);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a nivel educativo 1 con su codigo
+        try {
+            NivelEducativo nivelBuscado = NivelEducativoCrud.buscar("NE001");
+            System.out.println(nivelBuscado);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a nivel educativo 2, que no existe
+        try {
+            NivelEducativo nivelBuscado = NivelEducativoCrud.buscar("NE002");
+            System.out.println(nivelBuscado);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Agrego a nivel educativo 2 a la lista ahora si
+        try {
+            NivelEducativoCrud.agregar(nivel2);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Edito las propiedades de nivel educativo 1, y lo actualizo en la lista
+        try {
+
+            nivel1.setNombre("Ciclo intermedio de educación infantil");
+            nivel1.setDescripcion("Nivel para niños de 2 a 8 años.");
+            nivel1.setTipo(TipoNivelEducativo.PRIMARIA);
+
+            NivelEducativoCrud.editar(nivel1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo. Debe mostrar a nivel educativo 1 modificado y a nivel educativo 2
+        System.out.println(NivelEducativoCrud.listarTodo());
+
+        Thread.sleep(100);
+
+        // Ahora elimino a nivel educativo 3, lo que no se puede porque no existe.
+        try {
+            NivelEducativoCrud.eliminar("NE003");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora si elimino a nivel educativo 2.
+        try {
+            NivelEducativoCrud.eliminar("NE002");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a nivel educativo 1
+        System.out.println(NivelEducativoCrud.listarTodo());
+        
+        
+
+        System.out.println("\n----- MODALIDAD -----\n");
+
+        // Agrego a modalidad 1 a la lista
+        try {
+            ModalidadCrud.agregar(modalidad1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Cuento la cantidad de modalidades que hay hasta el momento
+        try {
+            int total = ModalidadCrud.contarTodo();
+            System.out.println("La cantidad de modalidades es " + total);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a modalidad 1 con su codigo
+        try {
+            Modalidad modalidadBuscada = ModalidadCrud.buscar("MOD001");
+            System.out.println(modalidadBuscada);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a modalidad 2, que no existe
+        try {
+            Modalidad modalidadBuscada = ModalidadCrud.buscar("MOD002");
+            System.out.println(modalidadBuscada);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Agrego a modalidad 2 a la lista ahora si
+        try {
+            ModalidadCrud.agregar(modalidad2);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Edito las propiedades de modalidad 1, y lo actualizo en la lista
+        try {
+            modalidad1.setNombre("Humanidades");
+            modalidad1.setDescripcion("Bachillerato enfocado en las ciencias humanas.");
+
+            ModalidadCrud.editar(modalidad1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo. Debe mostrar a modalidad 1 modificado y a modalidad 2
+        System.out.println(ModalidadCrud.listarTodo());
+
+        Thread.sleep(100);
+
+        // Ahora elimino a modalidad 3, lo que no se puede porque no existe.
+        try {
+            ModalidadCrud.eliminar("MOD003");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora si elimino a modalidad 2.
+        try {
+            ModalidadCrud.eliminar("MOD002");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a modalidad 1
+        System.out.println(ModalidadCrud.listarTodo());
+        
+        
+        
+        System.out.println("\n----- CURSO -----\n");
+
+        // Agrego a curso 1 a la lista
+        try {
+            CursoCrud.agregar(curso1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Cuento la cantidad de cursos que hay hasta el momento
+        try {
+            int total = CursoCrud.contarTodo();
+            System.out.println("La cantidad de cursos es " + total);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a curso 1 con su codigo
+        try {
+            Curso cursoBuscado = CursoCrud.buscar("C001");
+            System.out.println(cursoBuscado);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a curso 2, que no existe
+        try {
+            Curso cursoBuscado = CursoCrud.buscar("C002");
+            System.out.println(cursoBuscado);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Agrego a curso 2 a la lista ahora si
+        try {
+            CursoCrud.agregar(curso2);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Edito las propiedades de curso 1, y lo actualizo en la lista
+        try {
+            curso1.setNombre("Pre-Jardin");
+
+            CursoCrud.editar(curso1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo. Debe mostrar a curso 1 modificado y a curso 2
+        System.out.println(CursoCrud.listarTodo());
+
+        Thread.sleep(100);
+
+        // Ahora elimino a curso 3, lo que no se puede porque no existe.
+        try {
+            CursoCrud.eliminar("C003");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora si elimino a curso 2.
+        try {
+            CursoCrud.eliminar("C002");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a curso 1
+        System.out.println(CursoCrud.listarTodo());
+        
+        
+        
+        
+        System.out.println("\n----- CICLO ACADEMICO -----\n");
+
+        // Agrego a ciclo academico 1 a la lista
+        try {
+            CicloAcademicoCrud.agregar(ciclo2024);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Cuento la cantidad de ciclos academicos que hay hasta el momento
+        try {
+            int total = CicloAcademicoCrud.contarTodo();
+            System.out.println("La cantidad de ciclos academicos es " + total);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a ciclo academico 1 con su codigo
+        try {
+            CicloAcademico cicloBuscado = CicloAcademicoCrud.buscar("CA001");
+            System.out.println(cicloBuscado);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a ciclo academico 2, que no existe
+        try {
+            CicloAcademico cicloBuscado = CicloAcademicoCrud.buscar("CA002");
+            System.out.println(cicloBuscado);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Agrego a ciclo academico 2 a la lista ahora si
+        try {
+            CicloAcademicoCrud.agregar(ciclo2025);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Edito las propiedades de ciclo academico 1, y lo actualizo en la lista
+        try {
+            ciclo2024.setCantidadSemanas(34);
+            ciclo2024.setFechaFin(LocalDate.of(2024, 12, 15));
+
+            CicloAcademicoCrud.editar(ciclo2024);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo. Debe mostrar a ciclo academico 1 modificado y a ciclo academico 2
+        System.out.println(CicloAcademicoCrud.listarTodo());
+
+        Thread.sleep(100);
+
+        // Ahora elimino a ciclo academico 3, lo que no se puede porque no existe.
+        try {
+            CicloAcademicoCrud.eliminar("CA003");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora si elimino a ciclo academico 2.
+        try {
+            CicloAcademicoCrud.eliminar("CA002");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a ciclo academico 1
+        System.out.println(CicloAcademicoCrud.listarTodo());
+        
+        
+        
+        System.out.println("\n----- GRUPO INFANTIL -----\n");
+
+        // Agrego a grupo infantil 1 a la lista
+        try {
+            GrupoInfantilCrud.agregar(grupoInfantil1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Cuento la cantidad de grupos infantiles que hay hasta el momento
+        try {
+            int total = GrupoInfantilCrud.contarTodo();
+            System.out.println("La cantidad de grupos infantiles es " + total);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a grupo infantil 1 con su codigo
+        try {
+            GrupoInfantil grupoInfantilBuscado = GrupoInfantilCrud.buscar("GI001");
+            System.out.println(grupoInfantilBuscado);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a grupo infantil 2, que no existe
+        try {
+            GrupoInfantil grupoInfantilBuscado = GrupoInfantilCrud.buscar("GI002");
+            System.out.println(grupoInfantilBuscado);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Agrego a grupo infantil 2 a la lista ahora si
+        try {
+            GrupoInfantilCrud.agregar(grupoInfantil2);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Edito las propiedades de grupo infantil 1, y lo actualizo en la lista
+        try {
+            grupoInfantil1.setNombre("Jardín C 2024");
+            grupoInfantil1.setCicloAcademico(ciclo2024);
+
+            GrupoInfantilCrud.editar(grupoInfantil1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo. Debe mostrar a grupo infantil 1 modificado y a grupo infantil 2
+        System.out.println(GrupoInfantilCrud.listarTodo());
+
+        Thread.sleep(100);
+
+        // Ahora elimino a grupo infantil 3, lo que no se puede porque no existe.
+        try {
+            GrupoInfantilCrud.eliminar("GI003");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora si elimino a grupo infantil 2.
+        try {
+            GrupoInfantilCrud.eliminar("GI002");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a grupo infantil 1
+        System.out.println(GrupoInfantilCrud.listarTodo());
+        
+        
+        
+        System.out.println("\n----- GRUPO REGULAR -----\n");
+
+        // Agrego a grupo regular 1 a la lista
+        try {
+            GrupoRegularCrud.agregar(grupoRegular1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Cuento la cantidad de grupos regulares que hay hasta el momento
+        try {
+            int total = GrupoRegularCrud.contarTodo();
+            System.out.println("La cantidad de grupos regulares es " + total);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a grupo regular 1 con su codigo
+        try {
+            GrupoRegular grupoRegularBuscado = GrupoRegularCrud.buscar("GR001");
+            System.out.println(grupoRegularBuscado);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a grupo regular 2, que no existe
+        try {
+            GrupoRegular grupoRegularBuscado = GrupoRegularCrud.buscar("GR002");
+            System.out.println(grupoRegularBuscado);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Agrego a grupo regular 2 a la lista ahora si
+        try {
+            GrupoRegularCrud.agregar(grupoRegular2);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Edito las propiedades de grupo regular 1, y lo actualizo en la lista
+        try {
+            grupoRegular1.setNombre("Tercero Bachillerato D 2025");
+            grupoRegular1.setProfesorEncargado(profesorRegular2);
+
+            GrupoRegularCrud.editar(grupoRegular1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo. Debe mostrar a grupo regular 1 modificado y a grupo regular 2
+        System.out.println(GrupoRegularCrud.listarTodo());
+
+        Thread.sleep(100);
+
+        // Ahora elimino a grupo regular 3, lo que no se puede porque no existe.
+        try {
+            GrupoRegularCrud.eliminar("GR003");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora si elimino a grupo regular 2.
+        try {
+            GrupoRegularCrud.eliminar("GR002");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a grupo regular 1
+        System.out.println(GrupoRegularCrud.listarTodo());
+        
+        
+        
+        System.out.println("\n----- ASIGNATURA -----\n");
+
+        // Agrego a asignatura 1 a la lista
+        try {
+            AsignaturaCrud.agregar(asignatura1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Cuento la cantidad de asignaturas que hay hasta el momento
+        try {
+            int total = AsignaturaCrud.contarTodo();
+            System.out.println("La cantidad de asignaturas es " + total);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a asignatura 1 con su codigo
+        try {
+            Asignatura asignaturaBuscada = AsignaturaCrud.buscar("AS001");
+            System.out.println(asignaturaBuscada);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a asignatura 2, que no existe
+        try {
+            Asignatura asignaturaBuscada = AsignaturaCrud.buscar("AS002");
+            System.out.println(asignaturaBuscada);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Agrego a asignatura 2 a la lista ahora si
+        try {
+            AsignaturaCrud.agregar(asignatura2);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Edito las propiedades de asignatura 1, y lo actualizo en la lista
+        try {
+            asignatura1.setNombre("Álgebra");
+            asignatura1.setDescripcion("Asignatura que estudia las operaciones aritméticas.");
+
+            AsignaturaCrud.editar(asignatura1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo. Debe mostrar a asignatura 1 modificado y a asignatura 2
+        System.out.println(AsignaturaCrud.listarTodo());
+
+        Thread.sleep(100);
+
+        // Ahora elimino a asignatura 3, lo que no se puede porque no existe.
+        try {
+            AsignaturaCrud.eliminar("AS003");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora si elimino a asignatura 2.
+        try {
+            AsignaturaCrud.eliminar("AS002");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a asignatura 1
+        System.out.println(AsignaturaCrud.listarTodo());
+
+
+
+
+System.out.println("\n----- BLOQUE HORARIO -----\n");
+
+        // Agrego a bloque horario 1 a la lista
+        try {
+            BloqueHorarioCrud.agregar(bloqueHorario1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Cuento la cantidad de bloques horarios que hay hasta el momento
+        try {
+            int total = BloqueHorarioCrud.contarTodo();
+            System.out.println("La cantidad de bloques horarios es " + total);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a bloque horario 1 con su codigo
+        try {
+            BloqueHorario bloqueHorarioBuscado = BloqueHorarioCrud.buscar("BH001");
+            System.out.println(bloqueHorarioBuscado);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a bloque horario 2, que no existe
+        try {
+            BloqueHorario bloqueHorarioBuscado = BloqueHorarioCrud.buscar("BH002");
+            System.out.println(bloqueHorarioBuscado);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Agrego a bloque horario 2 a la lista ahora si
+        try {
+            BloqueHorarioCrud.agregar(bloqueHorario2);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Edito las propiedades de bloque horario 1, y lo actualizo en la lista
+        try {
+            bloqueHorario1.setDia(DiaSemana.JUEVES);
+            bloqueHorario1.setHoraInicio(LocalTime.of(7, 0));
+            bloqueHorario1.setHoraFin(LocalTime.of(8, 30));
+
+            BloqueHorarioCrud.editar(bloqueHorario1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo. Debe mostrar a bloque horario 1 modificado y a bloque horario 2
+        System.out.println(BloqueHorarioCrud.listarTodo());
+
+        Thread.sleep(100);
+
+        // Ahora elimino a bloque horario 3, lo que no se puede porque no existe.
+        try {
+            BloqueHorarioCrud.eliminar("BH003");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora si elimino a bloque horario 2.
+        try {
+            BloqueHorarioCrud.eliminar("BH002");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a bloque horario 1
+        System.out.println(BloqueHorarioCrud.listarTodo());
+
+
+
+System.out.println("\n----- CLASE -----\n");
+
+        // Agrego a clase 1 a la lista
+        try {
+            ClaseCrud.agregar(clase1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Cuento la cantidad de clases que hay hasta el momento
+        try {
+            int total = ClaseCrud.contarTodo();
+            System.out.println("La cantidad de clases es " + total);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a clase 1 con su codigo
+        try {
+            Clase claseBuscada = ClaseCrud.buscar("CL001");
+            System.out.println(claseBuscada);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a clase 2, que no existe
+        try {
+            Clase claseBuscada = ClaseCrud.buscar("CL002");
+            System.out.println(claseBuscada);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Agrego a clase 2 a la lista ahora si
+        try {
+            ClaseCrud.agregar(clase2);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Edito las propiedades de clase 1, y lo actualizo en la lista
+        try {
+            clase1.setGrupo(grupoRegular2);
+
+            ClaseCrud.editar(clase1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo. Debe mostrar a clase 1 modificado y a clase 2
+        System.out.println(ClaseCrud.listarTodo());
+
+        Thread.sleep(100);
+
+        // Ahora elimino a clase 3, lo que no se puede porque no existe.
+        try {
+            ClaseCrud.eliminar("CL003");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora si elimino a clase 2.
+        try {
+            ClaseCrud.eliminar("CL002");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a clase 1
+        System.out.println(ClaseCrud.listarTodo());
+
+
+
+
+
+System.out.println("\n----- SESION -----\n");
+
+        // Agrego a sesion 1 a la lista
+        try {
+            SesionCrud.agregar(sesion1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Cuento la cantidad de sesiones que hay hasta el momento
+        try {
+            int total = SesionCrud.contarTodo();
+            System.out.println("La cantidad de sesiones es " + total);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a sesion 1 con su codigo
+        try {
+            Sesion sesionBuscada = SesionCrud.buscar("S001");
+            System.out.println(sesionBuscada);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a sesion 2, que no existe
+        try {
+            Sesion sesionBuscada = SesionCrud.buscar("S002");
+            System.out.println(sesionBuscada);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Agrego a sesion 2 a la lista ahora si
+        try {
+            SesionCrud.agregar(sesion2);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Edito las propiedades de sesion 1, y lo actualizo en la lista
+        try {
+            sesion1.setSemana(6);
+            sesion1.setBloqueHorario(bloqueHorario2);
+
+            SesionCrud.editar(sesion1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo. Debe mostrar a sesion 1 modificado y a sesion 2
+        System.out.println(SesionCrud.listarTodo());
+
+        Thread.sleep(100);
+
+        // Ahora elimino a sesion 3, lo que no se puede porque no existe.
+        try {
+            SesionCrud.eliminar("S003");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora si elimino a sesion 2.
+        try {
+            SesionCrud.eliminar("S002");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a sesion 1
+        System.out.println(SesionCrud.listarTodo());
+
+
+
+
+
+System.out.println("\n----- BECA -----\n");
+
+        // Agrego a beca 1 a la lista
+        try {
+            BecaCrud.agregar(beca1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Cuento la cantidad de becas que hay hasta el momento
+        try {
+            int total = BecaCrud.contarTodo();
+            System.out.println("La cantidad de becas es " + total);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a beca 1 con su codigo
+        try {
+            Beca becaBuscada = BecaCrud.buscar("B001");
+            System.out.println(becaBuscada);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a beca 2, que no existe
+        try {
+            Beca becaBuscada = BecaCrud.buscar("B002");
+            System.out.println(becaBuscada);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Agrego a beca 2 a la lista ahora si
+        try {
+            BecaCrud.agregar(beca2);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Edito las propiedades de beca 1, y lo actualizo en la lista
+        try {
+            beca1.setNombre("Beca Ecopetrol");
+            beca1.setDescripcion("Otorgada al mejor estudiante del curso.");
+
+            BecaCrud.editar(beca1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo. Debe mostrar a beca 1 modificado y a beca 2
+        System.out.println(BecaCrud.listarTodo());
+
+        Thread.sleep(100);
+
+        // Ahora elimino a beca 3, lo que no se puede porque no existe.
+        try {
+            BecaCrud.eliminar("B003");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora si elimino a beca 2.
+        try {
+            BecaCrud.eliminar("B002");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a beca 1
+        System.out.println(BecaCrud.listarTodo());
+
+
+
+
+
+
+
+System.out.println("\n----- MATRICULA -----\n");
+
+        // Agrego a matricula 1 a la lista
+        try {
+            MatriculaCrud.agregar(matricula1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Cuento la cantidad de matriculas que hay hasta el momento
+        try {
+            int total = MatriculaCrud.contarTodo();
+            System.out.println("La cantidad de matriculas es " + total);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a matricula 1 con su codigo
+        try {
+            Matricula matriculaBuscada = MatriculaCrud.buscar("M001");
+            System.out.println(matriculaBuscada);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a matricula 2, que no existe
+        try {
+            Matricula matriculaBuscada = MatriculaCrud.buscar("M002");
+            System.out.println(matriculaBuscada);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Agrego a matricula 2 a la lista ahora si
+        try {
+            MatriculaCrud.agregar(matricula2);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Edito las propiedades de matricula 1, y lo actualizo en la lista
+        try {
+            matricula1.setEstado(EstadoMatricula.CANCELADA);
+            matricula1.setObservaciones("El estudiante se retira del colegio.");
+
+
+            MatriculaCrud.editar(matricula1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo. Debe mostrar a matricula 1 modificado y a matricula 2
+        System.out.println(MatriculaCrud.listarTodo());
+
+        Thread.sleep(100);
+
+        // Ahora elimino a matricula 3, lo que no se puede porque no existe.
+        try {
+            MatriculaCrud.eliminar("M003");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora si elimino a matricula 2.
+        try {
+            MatriculaCrud.eliminar("M002");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a matricula 1
+        System.out.println(MatriculaCrud.listarTodo());
+
+
+
+
+
+System.out.println("\n----- CONTRATO -----\n");
+
+        // Agrego a contrato 1 a la lista
+        try {
+            ContratoCrud.agregar(contrato1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Cuento la cantidad de contratos que hay hasta el momento
+        try {
+            int total = ContratoCrud.contarTodo();
+            System.out.println("La cantidad de contratos es " + total);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a contrato 1 con su codigo
+        try {
+            Contrato contratoBuscado = ContratoCrud.buscar("CON001");
+            System.out.println(contratoBuscado);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a contrato 2, que no existe
+        try {
+            Contrato contratoBuscado = ContratoCrud.buscar("CON002");
+            System.out.println(contratoBuscado);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Agrego a contrato 2 a la lista ahora si
+        try {
+            ContratoCrud.agregar(contrato2);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Edito las propiedades de contrato 1, y lo actualizo en la lista
+        try {
+            contrato1.setValorSalario(7000000);
+            contrato1.setEstado(EstadoContrato.EN_PROYECCION);
+
+            ContratoCrud.editar(contrato1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo. Debe mostrar a contrato 1 modificado y a contrato 2
+        System.out.println(ContratoCrud.listarTodo());
+
+        Thread.sleep(100);
+
+        // Ahora elimino a contrato 3, lo que no se puede porque no existe.
+        try {
+            ContratoCrud.eliminar("CON003");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora si elimino a contrato 2.
+        try {
+            ContratoCrud.eliminar("CON002");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a contrato 1
+        System.out.println(ContratoCrud.listarTodo());
+
+
+
+
+
+System.out.println("\n----- SERVICIO COMPLEMENTARIO -----\n");
+
+        // Agrego a servicio complementario 1 a la lista
+        try {
+            ServicioComplementarioCrud.agregar(servicio1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Cuento la cantidad de servicios complementarios que hay hasta el momento
+        try {
+            int total = ServicioComplementarioCrud.contarTodo();
+            System.out.println("La cantidad de servicios complementarios es " + total);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a servicio complementario 1 con su codigo
+        try {
+            ServicioComplementario servicioBuscado = ServicioComplementarioCrud.buscar("SC001");
+            System.out.println(servicioBuscado);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Busco a servicio complementario 2, que no existe
+        try {
+            ServicioComplementario servicioBuscado = ServicioComplementarioCrud.buscar("SC002");
+            System.out.println(servicioBuscado);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Agrego a servicio complementario 2 a la lista ahora si
+        try {
+            ServicioComplementarioCrud.agregar(servicio2);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Edito las propiedades de servicio complementario 1, y lo actualizo en la lista
+        try {
+            servicio1.setNombre("Biblioteca");
+            servicio1.setDescripcion("Prestamo de libros y otros materiales.");
+
+
+            ServicioComplementarioCrud.editar(servicio1);
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo. Debe mostrar a servicio complementario 1 modificado y a servicio complementario 2
+        System.out.println(ServicioComplementarioCrud.listarTodo());
+
+        Thread.sleep(100);
+
+        // Ahora elimino a servicio complementario 3, lo que no se puede porque no existe.
+        try {
+            ServicioComplementarioCrud.eliminar("SC003");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora si elimino a servicio complementario 2.
+        try {
+            ServicioComplementarioCrud.eliminar("SC002");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+
+        Thread.sleep(100);
+
+        // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a servicio complementario 1
+        System.out.println(ServicioComplementarioCrud.listarTodo());
         
     }
 
