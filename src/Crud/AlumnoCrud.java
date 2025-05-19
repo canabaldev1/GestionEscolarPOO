@@ -15,7 +15,7 @@ public class AlumnoCrud {
 
     public static void agregar(Alumno alumno) throws Exception {
         if (alumnos.containsKey(alumno.getId())) {
-            throw new Exception("el alumno ya existe!");
+            throw new Exception("el alumno "+alumno.getId()+" ya existe!");
         }
         alumnos.put(alumno.getId(), alumno);
     }

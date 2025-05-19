@@ -15,28 +15,28 @@ public class ServicioComplementarioCrud {
 
     public static void agregar(ServicioComplementario servicioComplementario) throws Exception {
         if (serviciosComplementarios.containsKey(servicioComplementario.getId())) {
-            throw new Exception("el servicio complementario ya existe!");
+            throw new Exception("el servicio complementario "+servicioComplementario.getId()+" ya existe!");
         }
         serviciosComplementarios.put(servicioComplementario.getId(), servicioComplementario);
     }
 
     public static ServicioComplementario buscar(String servicioComplementario_id) throws Exception {
         if (!serviciosComplementarios.containsKey(servicioComplementario_id)) {
-            throw new Exception("el servicio complementario no existe!");
+            throw new Exception("el servicio complementario "+servicioComplementario_id+" no existe!");
         }
         return serviciosComplementarios.get(servicioComplementario_id);
     }
 
     public static void editar(ServicioComplementario servicioComplementario) throws Exception {
         if (!serviciosComplementarios.containsKey(servicioComplementario.getId())) {
-            throw new Exception("el servicio complementario no existe!");
+            throw new Exception("el servicio complementario "+servicioComplementario.getId()+" no existe!");
         }
         serviciosComplementarios.put(servicioComplementario.getId(), servicioComplementario);
     }
 
     public static void eliminar(String servicioComplementario_id) throws Exception {
         if (!serviciosComplementarios.containsKey(servicioComplementario_id)) {
-            throw new Exception("el servicio complementario no existe!");
+            throw new Exception("el servicio complementario "+servicioComplementario_id+" no existe!");
         }
         serviciosComplementarios.remove(servicioComplementario_id);
     }

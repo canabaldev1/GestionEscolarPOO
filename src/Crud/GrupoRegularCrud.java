@@ -14,28 +14,28 @@ public class GrupoRegularCrud {
     
     public static void agregar (GrupoRegular grupoRegular) throws Exception {
         if (gruposRegulares.containsKey(grupoRegular.getId())) {
-            throw new Exception ("el grupo regular ya existe!");
+            throw new Exception ("el grupo regular "+grupoRegular.getId()+" ya existe!");
         }
         gruposRegulares.put(grupoRegular.getId(), grupoRegular );
     }
 
     public static GrupoRegular buscar (String grupoRegular_id) throws Exception {
         if (!gruposRegulares.containsKey(grupoRegular_id)) {
-            throw new Exception ("el grupo regular no existe!");
+            throw new Exception ("el grupo regular "+grupoRegular_id+" no existe!");
         }
         return gruposRegulares.get(grupoRegular_id);
     }
 
     public static void editar (GrupoRegular grupoRegular) throws Exception {
         if (!gruposRegulares.containsKey(grupoRegular.getId())) {
-            throw new Exception ("el grupo regular no existe!");
+            throw new Exception ("el grupo regular "+grupoRegular.getId()+" no existe!");
         }
         gruposRegulares.put(grupoRegular.getId(), grupoRegular);
     }
     
     public static void eliminar (String grupoRegular_id) throws Exception {
         if (!gruposRegulares.containsKey(grupoRegular_id)) {
-            throw new Exception ("el grupo regular no existe!");
+            throw new Exception ("el grupo regular "+grupoRegular_id+" no existe!");
         }
         gruposRegulares.remove(grupoRegular_id);
     }

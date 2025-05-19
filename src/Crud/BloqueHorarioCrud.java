@@ -14,28 +14,28 @@ public class BloqueHorarioCrud {
     
     public static void agregar (BloqueHorario bloqueHorario) throws Exception {
         if (bloquesHorarios.containsKey(bloqueHorario.getId())) {
-            throw new Exception ("el bloque horario ya existe!");
+            throw new Exception ("el bloque horario "+bloqueHorario.getId()+" ya existe!");
         }
         bloquesHorarios.put(bloqueHorario.getId(), bloqueHorario );
     }
 
     public static BloqueHorario buscar (String bloqueHorario_id) throws Exception {
         if (!bloquesHorarios.containsKey(bloqueHorario_id)) {
-            throw new Exception ("el bloque horario no existe!");
+            throw new Exception ("el bloque horario "+bloqueHorario_id+" no existe!");
         }
         return bloquesHorarios.get(bloqueHorario_id);
     }
 
     public static void editar (BloqueHorario bloqueHorario) throws Exception {
         if (!bloquesHorarios.containsKey(bloqueHorario.getId())) {
-            throw new Exception ("el bloque horario no existe!");
+            throw new Exception ("el bloque horario "+bloqueHorario.getId()+" no existe!");
         }
         bloquesHorarios.put(bloqueHorario.getId(), bloqueHorario);
     }
     
     public static void eliminar (String bloqueHorario_id) throws Exception {
         if (!bloquesHorarios.containsKey(bloqueHorario_id)) {
-            throw new Exception ("el bloque horario no existe!");
+            throw new Exception ("el bloque horario "+bloqueHorario_id+" no existe!");
         }
         bloquesHorarios.remove(bloqueHorario_id);
     }

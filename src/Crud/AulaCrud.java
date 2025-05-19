@@ -14,28 +14,28 @@ public class AulaCrud {
     
     public static void agregar (Aula aula) throws Exception {
         if (aulas.containsKey(aula.getId())) {
-            throw new Exception ("el aula ya existe!");
+            throw new Exception ("el aula "+aula.getId()+" ya existe!");
         }
         aulas.put(aula.getId(), aula );
     }
 
     public static Aula buscar (String aula_id) throws Exception {
         if (!aulas.containsKey(aula_id)) {
-            throw new Exception ("el aula no existe!");
+            throw new Exception ("el aula "+aula_id+" no existe!");
         }
         return aulas.get(aula_id);
     }
 
     public static void editar (Aula aula) throws Exception {
         if (!aulas.containsKey(aula.getId())) {
-            throw new Exception ("el aula no existe!");
+            throw new Exception ("el aula "+aula.getId()+" no existe!");
         }
         aulas.put(aula.getId(), aula);
     }
     
     public static void eliminar (String aula_id) throws Exception {
         if (!aulas.containsKey(aula_id)) {
-            throw new Exception ("el aula no existe!");
+            throw new Exception ("el aula "+aula_id+" no existe!");
         }
         aulas.remove(aula_id);
     }

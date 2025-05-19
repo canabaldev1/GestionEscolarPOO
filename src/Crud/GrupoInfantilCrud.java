@@ -14,28 +14,28 @@ public class GrupoInfantilCrud {
     
     public static void agregar (GrupoInfantil grupoInfantil) throws Exception {
         if (gruposInfantiles.containsKey(grupoInfantil.getId())) {
-            throw new Exception ("el grupo infantil ya existe!");
+            throw new Exception ("el grupo infantil "+grupoInfantil.getId()+" ya existe!");
         }
         gruposInfantiles.put(grupoInfantil.getId(), grupoInfantil );
     }
 
     public static GrupoInfantil buscar (String grupoInfantil_id) throws Exception {
         if (!gruposInfantiles.containsKey(grupoInfantil_id)) {
-            throw new Exception ("el grupo infantil no existe!");
+            throw new Exception ("el grupo infantil "+grupoInfantil_id+" no existe!");
         }
         return gruposInfantiles.get(grupoInfantil_id);
     }
 
     public static void editar (GrupoInfantil grupoInfantil) throws Exception {
         if (!gruposInfantiles.containsKey(grupoInfantil.getId())) {
-            throw new Exception ("el grupo infantil no existe!");
+            throw new Exception ("el grupo infantil "+grupoInfantil.getId()+" no existe!");
         }
         gruposInfantiles.put(grupoInfantil.getId(), grupoInfantil);
     }
     
     public static void eliminar (String grupoInfantil_id) throws Exception {
         if (!gruposInfantiles.containsKey(grupoInfantil_id)) {
-            throw new Exception ("el grupo infantil no existe!");
+            throw new Exception ("el grupo infantil "+grupoInfantil_id+" no existe!");
         }
         gruposInfantiles.remove(grupoInfantil_id);
     }

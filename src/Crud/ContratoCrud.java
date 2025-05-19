@@ -14,28 +14,28 @@ public class ContratoCrud {
     
     public static void agregar (Contrato contrato) throws Exception {
         if (contratos.containsKey(contrato.getId())) {
-            throw new Exception ("el contrato ya existe!");
+            throw new Exception ("el contrato "+contrato.getId()+" ya existe!");
         }
         contratos.put(contrato.getId(), contrato );
     }
 
     public static Contrato buscar (String contrato_id) throws Exception {
         if (!contratos.containsKey(contrato_id)) {
-            throw new Exception ("el contrato no existe!");
+            throw new Exception ("el contrato "+contrato_id+" no existe!");
         }
         return contratos.get(contrato_id);
     }
 
     public static void editar (Contrato contrato) throws Exception {
         if (!contratos.containsKey(contrato.getId())) {
-            throw new Exception ("el contrato no existe!");
+            throw new Exception ("el contrato "+contrato.getId()+" no existe!");
         }
         contratos.put(contrato.getId(), contrato);
     }
     
     public static void eliminar (String contrato_id) throws Exception {
         if (!contratos.containsKey(contrato_id)) {
-            throw new Exception ("el contrato no existe!");
+            throw new Exception ("el contrato "+contrato_id+" no existe!");
         }
         contratos.remove(contrato_id);
     }

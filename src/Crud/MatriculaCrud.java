@@ -15,28 +15,28 @@ public class MatriculaCrud {
 
     public static void agregar(Matricula matricula) throws Exception {
         if (matriculas.containsKey(matricula.getId())) {
-            throw new Exception("la matricula ya existe!");
+            throw new Exception("la matricula "+matricula.getId()+" ya existe!");
         }
         matriculas.put(matricula.getId(), matricula);
     }
 
     public static Matricula buscar(String matricula_id) throws Exception {
         if (!matriculas.containsKey(matricula_id)) {
-            throw new Exception("la matricula no existe!");
+            throw new Exception("la matricula "+matricula_id+" no existe!");
         }
         return matriculas.get(matricula_id);
     }
 
     public static void editar(Matricula matricula) throws Exception {
         if (!matriculas.containsKey(matricula.getId())) {
-            throw new Exception("la matricula no existe!");
+            throw new Exception("la matricula "+matricula.getId()+" no existe!");
         }
         matriculas.put(matricula.getId(), matricula);
     }
 
     public static void eliminar(String matricula_id) throws Exception {
         if (!matriculas.containsKey(matricula_id)) {
-            throw new Exception("la matricula no existe!");
+            throw new Exception("la matricula "+matricula_id+" no existe!");
         }
         matriculas.remove(matricula_id);
     }

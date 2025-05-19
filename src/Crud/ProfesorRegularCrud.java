@@ -15,28 +15,28 @@ public class ProfesorRegularCrud {
 
     public static void agregar(ProfesorRegular profesorRegular) throws Exception {
         if (profesoresRegulares.containsKey(profesorRegular.getId())) {
-            throw new Exception("el profesor regular ya existe!");
+            throw new Exception("el profesor regular "+profesorRegular.getId()+" ya existe!");
         }
         profesoresRegulares.put(profesorRegular.getId(), profesorRegular);
     }
 
     public static ProfesorRegular buscar(String profesorRegular_id) throws Exception {
         if (!profesoresRegulares.containsKey(profesorRegular_id)) {
-            throw new Exception("el profesor regular no existe!");
+            throw new Exception("el profesor regular "+profesorRegular_id+" no existe!");
         }
         return profesoresRegulares.get(profesorRegular_id);
     }
 
     public static void editar(ProfesorRegular profesorRegular) throws Exception {
         if (!profesoresRegulares.containsKey(profesorRegular.getId())) {
-            throw new Exception("el profesor regular no existe!");
+            throw new Exception("el profesor regular "+profesorRegular.getId()+" no existe!");
         }
         profesoresRegulares.put(profesorRegular.getId(), profesorRegular);
     }
 
     public static void eliminar(String profesorRegular_id) throws Exception {
         if (!profesoresRegulares.containsKey(profesorRegular_id)) {
-            throw new Exception("el profesor regular no existe!");
+            throw new Exception("el profesor regular "+profesorRegular_id+" no existe!");
         }
         profesoresRegulares.remove(profesorRegular_id);
     }

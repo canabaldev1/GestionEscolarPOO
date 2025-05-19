@@ -15,28 +15,28 @@ public class NivelEducativoCrud {
 
     public static void agregar(NivelEducativo nivelEducativo) throws Exception {
         if (nivelesEducativos.containsKey(nivelEducativo.getId())) {
-            throw new Exception("el nivel educativo ya existe!");
+            throw new Exception("el nivel educativo "+nivelEducativo.getId()+" ya existe!");
         }
         nivelesEducativos.put(nivelEducativo.getId(), nivelEducativo);
     }
 
     public static NivelEducativo buscar(String nivelEducativo_id) throws Exception {
         if (!nivelesEducativos.containsKey(nivelEducativo_id)) {
-            throw new Exception("el nivel educativo no existe!");
+            throw new Exception("el nivel educativo "+nivelEducativo_id+" no existe!");
         }
         return nivelesEducativos.get(nivelEducativo_id);
     }
 
     public static void editar(NivelEducativo nivelEducativo) throws Exception {
         if (!nivelesEducativos.containsKey(nivelEducativo.getId())) {
-            throw new Exception("el nivel educativo no existe!");
+            throw new Exception("el nivel educativo "+nivelEducativo.getId()+" no existe!");
         }
         nivelesEducativos.put(nivelEducativo.getId(), nivelEducativo);
     }
 
     public static void eliminar(String nivelEducativo_id) throws Exception {
         if (!nivelesEducativos.containsKey(nivelEducativo_id)) {
-            throw new Exception("el nivel educativo no existe!");
+            throw new Exception("el nivel educativo "+nivelEducativo_id+" no existe!");
         }
         nivelesEducativos.remove(nivelEducativo_id);
     }

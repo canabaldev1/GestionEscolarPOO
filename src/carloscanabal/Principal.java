@@ -134,7 +134,6 @@ public class Principal {
         admin1.setFechaNacimiento(LocalDate.of(1987, 6, 24));
         admin1.setTelefono("3101010101");
         admin1.setDireccion("Rosario, Argentina");
-
         admin1.setProfesion("Atleta");
         admin1.setNumeroCuentaBancaria("101010101010");
         admin1.setTipoCuentaBancaria(TipoCuenta.CORRIENTE);
@@ -452,7 +451,8 @@ public class Principal {
         profesorInfantil1.setGrupo(grupoInfantil1);
         profesorInfantil2.setGrupo(grupoInfantil1);
 
-        GrupoInfantil grupoInfantil2 = new GrupoInfantil("GI002", "Jardín B 2025", curso1, ciclo2025);
+        GrupoInfantil grupoInfantil2 = new GrupoInfantil(
+                "GI002", "Jardín B 2025", curso1, ciclo2025);
         grupoInfantil2.setAula(aula2);
         grupoInfantil2.setProfesorEncargado(profesorInfantil3);
         grupoInfantil2.setProfesorAsistente(profesorInfantil4);
@@ -486,7 +486,8 @@ public class Principal {
         aula3.addGrupo(grupoRegular1);
         profesorRegular1.setGrupo(grupoRegular1);
 
-        GrupoRegular grupoRegular2 = new GrupoRegular("GR002", "Segundo Bachillerato B 2025", curso2, ciclo2025);
+        GrupoRegular grupoRegular2 = new GrupoRegular(
+                "GR002", "Segundo Bachillerato B 2025", curso2, ciclo2025);
         grupoRegular2.setAula(aula4);
         grupoRegular2.setProfesorEncargado(profesorRegular2);
 
@@ -506,7 +507,7 @@ public class Principal {
         Asignatura asignatura1 = new Asignatura();
         asignatura1.setId("AS001");
         asignatura1.setNombre("Matemáticas");
-        asignatura1.setDescripcion("Asignatura que estudia las ciencias matemáticas.");
+        asignatura1.setDescripcion("Asignatura que estudia los numeros.");
         asignatura1.setPrioridad(PrioridadAsignatura.ALTA);
 
         Asignatura asignatura2 = new Asignatura("AS002", "Educación Física");
@@ -550,9 +551,9 @@ public class Principal {
         clase1.setCicloAcademico(ciclo2025);
         clase1.setProfesor(profesorRegular1);
 
-        // Relaciones entre clases y grupo regular, entre clase y asignatura,
-        // entre clase y ciclo academico, entre clase y profesor regular, y entre
-        // clase y bloque horario.
+        // Relaciones entre clases y grupo regular, entre clase y
+        // asignatura, entre clase y ciclo academico, y clase 
+        // y profesor regular.
         grupoRegular1.addClase(clase1);
         asignatura1.addClase(clase1);
         ciclo2025.addClase(clase1);
@@ -566,8 +567,9 @@ public class Principal {
         );
         clase2.setProfesor(profesorRegular2);
 
-        // Relaciones entre clases y grupo regular, entre clase y asignatura,
-        // entre clase y ciclo academico, y clase y profesor regular.
+        // Relaciones entre clases y grupo regular, entre clase y 
+        // asignatura, entre clase y ciclo academico, y clase 
+        // y profesor regular.
         grupoRegular1.addClase(clase2);
         asignatura2.addClase(clase2);
         ciclo2025.addClase(clase2);
@@ -586,8 +588,8 @@ public class Principal {
         sesion1.setAula(aula1);
         sesion1.setClase(clase1);
 
-        // Relacion entre sesion y bloque horario, entre sesion y aula, y entre
-        // sesion y clase.
+        // Relacion entre sesion y bloque horario, entre sesion y 
+        // aula, y entre sesion y clase.
         bloqueHorario1.addSesion(sesion1);
         aula1.addSesion(sesion1);
         clase1.addSesion(sesion1);
@@ -601,8 +603,8 @@ public class Principal {
                 clase1
         );
 
-        // Relacion entre sesion y bloque horario, entre sesion y aula, y entre
-        // sesion y clase.
+        // Relacion entre sesion y bloque horario, entre sesion y 
+        // aula, y entre sesion y clase.
         bloqueHorario1.addSesion(sesion2);
         aula1.addSesion(sesion2);
         clase1.addSesion(sesion2);
@@ -615,14 +617,17 @@ public class Principal {
         Beca beca1 = new Beca();
         beca1.setId("B001");
         beca1.setNombre("Beca Excelencia Académica");
-        beca1.setDescripcion("Otorgada a estudiantes con promedio sobresaliente.");
+        beca1.setDescripcion(
+                "Otorgada a estudiantes con promedio sobresaliente.");
         beca1.setValorDescuento(500000);
         beca1.setObservaciones("Aplica únicamente al primer ciclo.");
         beca1.setOtorgadaPor("Dirección Académica");
         beca1.setEstado(EstadoBeca.ACTIVA);
 
-        Beca beca2 = new Beca("B002", "Beca de Inclusión", "Ministerio de Educación");
-        beca2.setDescripcion("Otorgada a estudiantes provenientes de comunidades vulnerables.");
+        Beca beca2 = new Beca(
+                "B002", "Beca de Inclusión", "Ministerio de Educación");
+        beca2.setDescripcion(
+                "Otorgada a estudiantes provenientes de comunidades vulnerables.");
         beca2.setValorDescuento(450000);
         beca2.setObservaciones("Renovable si mantiene promedio alto.");
         beca2.setEstado(EstadoBeca.DISPONIBLE);
@@ -652,7 +657,8 @@ public class Principal {
         beca1.setMatricula(matricula1);
         ciclo2025.addMatricula(matricula1);
 
-        Matricula matricula2 = new Matricula("M002", LocalDateTime.of(2025, 3, 1, 10, 15), alumno2, ciclo2025);
+        Matricula matricula2 = new Matricula(
+                "M002", LocalDateTime.of(2025, 3, 1, 10, 15), alumno2, ciclo2025);
         matricula2.setValorMatricula(500000);
         matricula2.setValorMensualidad(120000);
         matricula2.setCurso(curso1);
@@ -721,8 +727,10 @@ public class Principal {
         // Relacion entre servicios complementarios y ciclo academico
         ciclo2025.addServicioComplementario(servicio1);
 
-        ServicioComplementario servicio2 = new ServicioComplementario("SC002", "Comedor", ciclo2025);
-        servicio2.setDescripcion("Espacio extracurricular para experimentos y actividades científicas.");
+        ServicioComplementario servicio2 = new ServicioComplementario(
+                "SC002", "Comedor", ciclo2025);
+        servicio2.setDescripcion(
+                "Espacio extracurricular para experimentos y actividades científicas.");
         servicio2.setValor(150000);
         servicio2.setFechaInicio(LocalDate.of(2025, 2, 1));
         servicio2.setFechaFin(LocalDate.of(2025, 11, 30));
@@ -889,7 +897,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Cuento la cantidad de alumnos que hay hasta el momento
         try {
@@ -899,7 +907,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco al alumno con su codigo
         try {
@@ -909,7 +917,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco al alumno 2, que no existe
         try {
@@ -919,7 +927,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Agrego al alumno 2 a la lista ahora si
         try {
@@ -928,7 +936,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Edito las propiedades de alumno 1, y lo actualizo en la lista
         try {
@@ -941,12 +949,12 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo. Debe mostrar al alumno 1 modificado y al alumno 2
         System.out.println(AlumnoCrud.listarTodo());
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora elimino al alumno 3, lo que no se puede porque no existe.
         try {
@@ -955,7 +963,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora si elimino al alumno 2.
         try {
@@ -964,10 +972,11 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo nuevamente, en esta ocacioón solo debe mostrar al alumno 1
         System.out.println(AlumnoCrud.listarTodo());
+        
 
         System.out.println("\n----- ADMINISTRATIVOS -----\n");
 
@@ -978,7 +987,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Cuento la cantidad de administrativos que hay hasta el momento
         try {
@@ -988,7 +997,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a administrativo 1 con su codigo
         try {
@@ -998,7 +1007,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a administrativo 2, que no existe
         try {
@@ -1008,7 +1017,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Agrego a administrativo 2 a la lista ahora si
         try {
@@ -1017,7 +1026,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Edito las propiedades de administrativo 1, y lo actualizo en la lista
         try {
@@ -1030,12 +1039,12 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo. Debe mostrar a administrativo 1 modificado y a administrativo 2
         System.out.println(AdministrativoCrud.listarTodo());
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora elimino a administrativo 3, lo que no se puede porque no existe.
         try {
@@ -1044,7 +1053,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora si elimino a administrativo 2.
         try {
@@ -1053,7 +1062,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a administrativo 1
         System.out.println(AdministrativoCrud.listarTodo());
@@ -1067,7 +1076,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Cuento la cantidad de profesores regulares que hay hasta el momento
         try {
@@ -1077,7 +1086,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a profesor regular 1 con su codigo
         try {
@@ -1087,7 +1096,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a profesor regular 2, que no existe
         try {
@@ -1097,7 +1106,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Agrego a profesor regular 2 a la lista ahora si
         try {
@@ -1106,7 +1115,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Edito las propiedades de profesor regular 1, y lo actualizo en la lista
         try {
@@ -1118,12 +1127,12 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo. Debe mostrar a profesor regular 1 modificado y a profesor regular 2
         System.out.println(ProfesorRegularCrud.listarTodo());
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora elimino a profesor regular 3, lo que no se puede porque no existe.
         try {
@@ -1132,7 +1141,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora si elimino a profesor regular 2.
         try {
@@ -1141,7 +1150,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a profesor regular 1
         System.out.println(ProfesorRegularCrud.listarTodo());
@@ -1155,7 +1164,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Cuento la cantidad de profesores infantiles que hay hasta el momento
         try {
@@ -1165,7 +1174,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a profesor infantil 1 con su codigo
         try {
@@ -1175,7 +1184,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a profesor infantil 2, que no existe
         try {
@@ -1185,7 +1194,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Agrego a profesor infantil 2 a la lista ahora si
         try {
@@ -1194,7 +1203,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Edito las propiedades de profesor infantil 1, y lo actualizo en la lista
         try {
@@ -1206,12 +1215,12 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo. Debe mostrar a profesor infantil 1 modificado y a profesor infantil 2
         System.out.println(ProfesorInfantilCrud.listarTodo());
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora elimino a profesor infantil 3, lo que no se puede porque no existe.
         try {
@@ -1220,7 +1229,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora si elimino a profesor infantil 2.
         try {
@@ -1229,7 +1238,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a profesor infantil 1
         System.out.println(ProfesorInfantilCrud.listarTodo());
@@ -1243,7 +1252,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Cuento la cantidad de aulas que hay hasta el momento
         try {
@@ -1253,7 +1262,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a aula 1 con su codigo
         try {
@@ -1263,7 +1272,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a aula 2, que no existe
         try {
@@ -1273,7 +1282,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Agrego a aula 2 a la lista ahora si
         try {
@@ -1282,7 +1291,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Edito las propiedades de aula 1, y lo actualizo en la lista
         try {
@@ -1294,12 +1303,12 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo. Debe mostrar a aula 1 modificado y a aula 2
         System.out.println(AulaCrud.listarTodo());
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora elimino a aula 3, lo que no se puede porque no existe.
         try {
@@ -1308,7 +1317,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora si elimino a aula 2.
         try {
@@ -1317,7 +1326,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a aula 1
         System.out.println(AulaCrud.listarTodo());
@@ -1331,7 +1340,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Cuento la cantidad de niveles educativos que hay hasta el momento
         try {
@@ -1341,7 +1350,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a nivel educativo 1 con su codigo
         try {
@@ -1351,7 +1360,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a nivel educativo 2, que no existe
         try {
@@ -1361,7 +1370,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Agrego a nivel educativo 2 a la lista ahora si
         try {
@@ -1370,7 +1379,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Edito las propiedades de nivel educativo 1, y lo actualizo en la lista
         try {
@@ -1384,12 +1393,12 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo. Debe mostrar a nivel educativo 1 modificado y a nivel educativo 2
         System.out.println(NivelEducativoCrud.listarTodo());
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora elimino a nivel educativo 3, lo que no se puede porque no existe.
         try {
@@ -1398,7 +1407,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora si elimino a nivel educativo 2.
         try {
@@ -1407,7 +1416,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a nivel educativo 1
         System.out.println(NivelEducativoCrud.listarTodo());
@@ -1423,7 +1432,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Cuento la cantidad de modalidades que hay hasta el momento
         try {
@@ -1433,7 +1442,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a modalidad 1 con su codigo
         try {
@@ -1443,7 +1452,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a modalidad 2, que no existe
         try {
@@ -1453,7 +1462,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Agrego a modalidad 2 a la lista ahora si
         try {
@@ -1462,7 +1471,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Edito las propiedades de modalidad 1, y lo actualizo en la lista
         try {
@@ -1474,12 +1483,12 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo. Debe mostrar a modalidad 1 modificado y a modalidad 2
         System.out.println(ModalidadCrud.listarTodo());
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora elimino a modalidad 3, lo que no se puede porque no existe.
         try {
@@ -1488,7 +1497,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora si elimino a modalidad 2.
         try {
@@ -1497,7 +1506,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a modalidad 1
         System.out.println(ModalidadCrud.listarTodo());
@@ -1513,7 +1522,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Cuento la cantidad de cursos que hay hasta el momento
         try {
@@ -1523,7 +1532,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a curso 1 con su codigo
         try {
@@ -1533,7 +1542,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a curso 2, que no existe
         try {
@@ -1543,7 +1552,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Agrego a curso 2 a la lista ahora si
         try {
@@ -1552,7 +1561,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Edito las propiedades de curso 1, y lo actualizo en la lista
         try {
@@ -1563,12 +1572,12 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo. Debe mostrar a curso 1 modificado y a curso 2
         System.out.println(CursoCrud.listarTodo());
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora elimino a curso 3, lo que no se puede porque no existe.
         try {
@@ -1577,7 +1586,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora si elimino a curso 2.
         try {
@@ -1586,7 +1595,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a curso 1
         System.out.println(CursoCrud.listarTodo());
@@ -1603,7 +1612,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Cuento la cantidad de ciclos academicos que hay hasta el momento
         try {
@@ -1613,7 +1622,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a ciclo academico 1 con su codigo
         try {
@@ -1623,7 +1632,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a ciclo academico 2, que no existe
         try {
@@ -1633,7 +1642,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Agrego a ciclo academico 2 a la lista ahora si
         try {
@@ -1642,7 +1651,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Edito las propiedades de ciclo academico 1, y lo actualizo en la lista
         try {
@@ -1654,12 +1663,12 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo. Debe mostrar a ciclo academico 1 modificado y a ciclo academico 2
         System.out.println(CicloAcademicoCrud.listarTodo());
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora elimino a ciclo academico 3, lo que no se puede porque no existe.
         try {
@@ -1668,7 +1677,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora si elimino a ciclo academico 2.
         try {
@@ -1677,7 +1686,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a ciclo academico 1
         System.out.println(CicloAcademicoCrud.listarTodo());
@@ -1693,7 +1702,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Cuento la cantidad de grupos infantiles que hay hasta el momento
         try {
@@ -1703,7 +1712,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a grupo infantil 1 con su codigo
         try {
@@ -1713,7 +1722,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a grupo infantil 2, que no existe
         try {
@@ -1723,7 +1732,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Agrego a grupo infantil 2 a la lista ahora si
         try {
@@ -1732,7 +1741,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Edito las propiedades de grupo infantil 1, y lo actualizo en la lista
         try {
@@ -1744,12 +1753,12 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo. Debe mostrar a grupo infantil 1 modificado y a grupo infantil 2
         System.out.println(GrupoInfantilCrud.listarTodo());
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora elimino a grupo infantil 3, lo que no se puede porque no existe.
         try {
@@ -1758,7 +1767,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora si elimino a grupo infantil 2.
         try {
@@ -1767,7 +1776,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a grupo infantil 1
         System.out.println(GrupoInfantilCrud.listarTodo());
@@ -1783,7 +1792,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Cuento la cantidad de grupos regulares que hay hasta el momento
         try {
@@ -1793,7 +1802,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a grupo regular 1 con su codigo
         try {
@@ -1803,7 +1812,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a grupo regular 2, que no existe
         try {
@@ -1813,7 +1822,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Agrego a grupo regular 2 a la lista ahora si
         try {
@@ -1822,7 +1831,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Edito las propiedades de grupo regular 1, y lo actualizo en la lista
         try {
@@ -1834,12 +1843,12 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo. Debe mostrar a grupo regular 1 modificado y a grupo regular 2
         System.out.println(GrupoRegularCrud.listarTodo());
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora elimino a grupo regular 3, lo que no se puede porque no existe.
         try {
@@ -1848,7 +1857,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora si elimino a grupo regular 2.
         try {
@@ -1857,7 +1866,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a grupo regular 1
         System.out.println(GrupoRegularCrud.listarTodo());
@@ -1873,7 +1882,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Cuento la cantidad de asignaturas que hay hasta el momento
         try {
@@ -1883,7 +1892,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a asignatura 1 con su codigo
         try {
@@ -1893,7 +1902,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a asignatura 2, que no existe
         try {
@@ -1903,7 +1912,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Agrego a asignatura 2 a la lista ahora si
         try {
@@ -1912,24 +1921,24 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Edito las propiedades de asignatura 1, y lo actualizo en la lista
         try {
             asignatura1.setNombre("Álgebra");
-            asignatura1.setDescripcion("Asignatura que estudia las operaciones aritméticas.");
+            asignatura1.setDescripcion("Estudio de las operaciones aritméticas.");
 
             AsignaturaCrud.editar(asignatura1);
         } catch (Exception ex) {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo. Debe mostrar a asignatura 1 modificado y a asignatura 2
         System.out.println(AsignaturaCrud.listarTodo());
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora elimino a asignatura 3, lo que no se puede porque no existe.
         try {
@@ -1938,7 +1947,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora si elimino a asignatura 2.
         try {
@@ -1947,7 +1956,7 @@ public class Principal {
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a asignatura 1
         System.out.println(AsignaturaCrud.listarTodo());
@@ -1964,7 +1973,7 @@ System.out.println("\n----- BLOQUE HORARIO -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Cuento la cantidad de bloques horarios que hay hasta el momento
         try {
@@ -1974,7 +1983,7 @@ System.out.println("\n----- BLOQUE HORARIO -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a bloque horario 1 con su codigo
         try {
@@ -1984,7 +1993,7 @@ System.out.println("\n----- BLOQUE HORARIO -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a bloque horario 2, que no existe
         try {
@@ -1994,7 +2003,7 @@ System.out.println("\n----- BLOQUE HORARIO -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Agrego a bloque horario 2 a la lista ahora si
         try {
@@ -2003,7 +2012,7 @@ System.out.println("\n----- BLOQUE HORARIO -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Edito las propiedades de bloque horario 1, y lo actualizo en la lista
         try {
@@ -2016,12 +2025,12 @@ System.out.println("\n----- BLOQUE HORARIO -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo. Debe mostrar a bloque horario 1 modificado y a bloque horario 2
         System.out.println(BloqueHorarioCrud.listarTodo());
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora elimino a bloque horario 3, lo que no se puede porque no existe.
         try {
@@ -2030,7 +2039,7 @@ System.out.println("\n----- BLOQUE HORARIO -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora si elimino a bloque horario 2.
         try {
@@ -2039,7 +2048,7 @@ System.out.println("\n----- BLOQUE HORARIO -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a bloque horario 1
         System.out.println(BloqueHorarioCrud.listarTodo());
@@ -2055,7 +2064,7 @@ System.out.println("\n----- CLASE -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Cuento la cantidad de clases que hay hasta el momento
         try {
@@ -2065,7 +2074,7 @@ System.out.println("\n----- CLASE -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a clase 1 con su codigo
         try {
@@ -2075,7 +2084,7 @@ System.out.println("\n----- CLASE -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a clase 2, que no existe
         try {
@@ -2085,7 +2094,7 @@ System.out.println("\n----- CLASE -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Agrego a clase 2 a la lista ahora si
         try {
@@ -2094,7 +2103,7 @@ System.out.println("\n----- CLASE -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Edito las propiedades de clase 1, y lo actualizo en la lista
         try {
@@ -2105,12 +2114,12 @@ System.out.println("\n----- CLASE -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo. Debe mostrar a clase 1 modificado y a clase 2
         System.out.println(ClaseCrud.listarTodo());
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora elimino a clase 3, lo que no se puede porque no existe.
         try {
@@ -2119,7 +2128,7 @@ System.out.println("\n----- CLASE -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora si elimino a clase 2.
         try {
@@ -2128,7 +2137,7 @@ System.out.println("\n----- CLASE -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a clase 1
         System.out.println(ClaseCrud.listarTodo());
@@ -2146,7 +2155,7 @@ System.out.println("\n----- SESION -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Cuento la cantidad de sesiones que hay hasta el momento
         try {
@@ -2156,7 +2165,7 @@ System.out.println("\n----- SESION -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a sesion 1 con su codigo
         try {
@@ -2166,7 +2175,7 @@ System.out.println("\n----- SESION -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a sesion 2, que no existe
         try {
@@ -2176,7 +2185,7 @@ System.out.println("\n----- SESION -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Agrego a sesion 2 a la lista ahora si
         try {
@@ -2185,7 +2194,7 @@ System.out.println("\n----- SESION -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Edito las propiedades de sesion 1, y lo actualizo en la lista
         try {
@@ -2197,12 +2206,12 @@ System.out.println("\n----- SESION -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo. Debe mostrar a sesion 1 modificado y a sesion 2
         System.out.println(SesionCrud.listarTodo());
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora elimino a sesion 3, lo que no se puede porque no existe.
         try {
@@ -2211,7 +2220,7 @@ System.out.println("\n----- SESION -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora si elimino a sesion 2.
         try {
@@ -2220,7 +2229,7 @@ System.out.println("\n----- SESION -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a sesion 1
         System.out.println(SesionCrud.listarTodo());
@@ -2238,7 +2247,7 @@ System.out.println("\n----- BECA -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Cuento la cantidad de becas que hay hasta el momento
         try {
@@ -2248,7 +2257,7 @@ System.out.println("\n----- BECA -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a beca 1 con su codigo
         try {
@@ -2258,7 +2267,7 @@ System.out.println("\n----- BECA -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a beca 2, que no existe
         try {
@@ -2268,7 +2277,7 @@ System.out.println("\n----- BECA -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Agrego a beca 2 a la lista ahora si
         try {
@@ -2277,7 +2286,7 @@ System.out.println("\n----- BECA -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Edito las propiedades de beca 1, y lo actualizo en la lista
         try {
@@ -2289,12 +2298,12 @@ System.out.println("\n----- BECA -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo. Debe mostrar a beca 1 modificado y a beca 2
         System.out.println(BecaCrud.listarTodo());
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora elimino a beca 3, lo que no se puede porque no existe.
         try {
@@ -2303,7 +2312,7 @@ System.out.println("\n----- BECA -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora si elimino a beca 2.
         try {
@@ -2312,7 +2321,7 @@ System.out.println("\n----- BECA -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a beca 1
         System.out.println(BecaCrud.listarTodo());
@@ -2332,7 +2341,7 @@ System.out.println("\n----- MATRICULA -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Cuento la cantidad de matriculas que hay hasta el momento
         try {
@@ -2342,7 +2351,7 @@ System.out.println("\n----- MATRICULA -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a matricula 1 con su codigo
         try {
@@ -2352,7 +2361,7 @@ System.out.println("\n----- MATRICULA -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a matricula 2, que no existe
         try {
@@ -2362,7 +2371,7 @@ System.out.println("\n----- MATRICULA -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Agrego a matricula 2 a la lista ahora si
         try {
@@ -2371,7 +2380,7 @@ System.out.println("\n----- MATRICULA -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Edito las propiedades de matricula 1, y lo actualizo en la lista
         try {
@@ -2384,12 +2393,12 @@ System.out.println("\n----- MATRICULA -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo. Debe mostrar a matricula 1 modificado y a matricula 2
         System.out.println(MatriculaCrud.listarTodo());
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora elimino a matricula 3, lo que no se puede porque no existe.
         try {
@@ -2398,7 +2407,7 @@ System.out.println("\n----- MATRICULA -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora si elimino a matricula 2.
         try {
@@ -2407,7 +2416,7 @@ System.out.println("\n----- MATRICULA -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a matricula 1
         System.out.println(MatriculaCrud.listarTodo());
@@ -2425,7 +2434,7 @@ System.out.println("\n----- CONTRATO -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Cuento la cantidad de contratos que hay hasta el momento
         try {
@@ -2435,7 +2444,7 @@ System.out.println("\n----- CONTRATO -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a contrato 1 con su codigo
         try {
@@ -2445,7 +2454,7 @@ System.out.println("\n----- CONTRATO -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a contrato 2, que no existe
         try {
@@ -2455,7 +2464,7 @@ System.out.println("\n----- CONTRATO -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Agrego a contrato 2 a la lista ahora si
         try {
@@ -2464,7 +2473,7 @@ System.out.println("\n----- CONTRATO -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Edito las propiedades de contrato 1, y lo actualizo en la lista
         try {
@@ -2476,12 +2485,12 @@ System.out.println("\n----- CONTRATO -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo. Debe mostrar a contrato 1 modificado y a contrato 2
         System.out.println(ContratoCrud.listarTodo());
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora elimino a contrato 3, lo que no se puede porque no existe.
         try {
@@ -2490,7 +2499,7 @@ System.out.println("\n----- CONTRATO -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora si elimino a contrato 2.
         try {
@@ -2499,7 +2508,7 @@ System.out.println("\n----- CONTRATO -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a contrato 1
         System.out.println(ContratoCrud.listarTodo());
@@ -2517,7 +2526,7 @@ System.out.println("\n----- SERVICIO COMPLEMENTARIO -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Cuento la cantidad de servicios complementarios que hay hasta el momento
         try {
@@ -2527,7 +2536,7 @@ System.out.println("\n----- SERVICIO COMPLEMENTARIO -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a servicio complementario 1 con su codigo
         try {
@@ -2537,7 +2546,7 @@ System.out.println("\n----- SERVICIO COMPLEMENTARIO -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Busco a servicio complementario 2, que no existe
         try {
@@ -2547,7 +2556,7 @@ System.out.println("\n----- SERVICIO COMPLEMENTARIO -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Agrego a servicio complementario 2 a la lista ahora si
         try {
@@ -2556,7 +2565,7 @@ System.out.println("\n----- SERVICIO COMPLEMENTARIO -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Edito las propiedades de servicio complementario 1, y lo actualizo en la lista
         try {
@@ -2569,12 +2578,12 @@ System.out.println("\n----- SERVICIO COMPLEMENTARIO -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo. Debe mostrar a servicio complementario 1 modificado y a servicio complementario 2
         System.out.println(ServicioComplementarioCrud.listarTodo());
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora elimino a servicio complementario 3, lo que no se puede porque no existe.
         try {
@@ -2583,7 +2592,7 @@ System.out.println("\n----- SERVICIO COMPLEMENTARIO -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora si elimino a servicio complementario 2.
         try {
@@ -2592,10 +2601,11 @@ System.out.println("\n----- SERVICIO COMPLEMENTARIO -----\n");
             System.err.println(ex);
         }
 
-        Thread.sleep(100);
+        Thread.sleep(10);
 
         // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a servicio complementario 1
         System.out.println(ServicioComplementarioCrud.listarTodo());
+        
         
     }
 

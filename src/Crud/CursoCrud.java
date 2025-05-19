@@ -14,28 +14,28 @@ public class CursoCrud {
     
     public static void agregar (Curso curso) throws Exception {
         if (cursos.containsKey(curso.getId())) {
-            throw new Exception ("el curso ya existe!");
+            throw new Exception ("el curso "+curso.getId()+" ya existe!");
         }
         cursos.put(curso.getId(), curso );
     }
 
     public static Curso buscar (String curso_id) throws Exception {
         if (!cursos.containsKey(curso_id)) {
-            throw new Exception ("el curso no existe!");
+            throw new Exception ("el curso "+curso_id+" no existe!");
         }
         return cursos.get(curso_id);
     }
 
     public static void editar (Curso curso) throws Exception {
         if (!cursos.containsKey(curso.getId())) {
-            throw new Exception ("el curso no existe!");
+            throw new Exception ("el curso "+curso.getId()+" no existe!");
         }
         cursos.put(curso.getId(), curso);
     }
     
     public static void eliminar (String curso_id) throws Exception {
         if (!cursos.containsKey(curso_id)) {
-            throw new Exception ("el curso no existe!");
+            throw new Exception ("el curso "+curso_id+" no existe!");
         }
         cursos.remove(curso_id);
     }

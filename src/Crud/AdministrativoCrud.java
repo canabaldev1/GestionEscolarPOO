@@ -14,28 +14,28 @@ public class AdministrativoCrud {
     
     public static void agregar (Administrativo administrativo) throws Exception {
         if (administrativos.containsKey(administrativo.getId())) {
-            throw new Exception ("el usuario administrativo ya existe!");
+            throw new Exception ("el usuario administrativo "+administrativo.getId()+" ya existe!");
         }
         administrativos.put(administrativo.getId(), administrativo );
     }
 
     public static Administrativo buscar (String administrativo_id) throws Exception {
         if (!administrativos.containsKey(administrativo_id)) {
-            throw new Exception ("el usuario administrativo no existe!");
+            throw new Exception ("el usuario administrativo "+administrativo_id+" no existe!");
         }
         return administrativos.get(administrativo_id);
     }
 
     public static void editar (Administrativo administrativo) throws Exception {
         if (!administrativos.containsKey(administrativo.getId())) {
-            throw new Exception ("el usuario administrativo no existe!");
+            throw new Exception ("el usuario administrativo "+administrativo.getId()+" no existe!");
         }
         administrativos.put(administrativo.getId(), administrativo);
     }
     
     public static void eliminar (String administrativo_id) throws Exception {
         if (!administrativos.containsKey(administrativo_id)) {
-            throw new Exception ("el usuario administrativo no existe!");
+            throw new Exception ("el usuario administrativo "+administrativo_id+" no existe!");
         }
         administrativos.remove(administrativo_id);
     }

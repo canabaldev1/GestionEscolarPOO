@@ -14,28 +14,28 @@ public class AsignaturaCrud {
     
     public static void agregar (Asignatura asignatura) throws Exception {
         if (asignaturas.containsKey(asignatura.getId())) {
-            throw new Exception ("la asignatura ya existe!");
+            throw new Exception ("la asignatura "+asignatura.getId()+" ya existe!");
         }
         asignaturas.put(asignatura.getId(), asignatura );
     }
 
     public static Asignatura buscar (String asignatura_id) throws Exception {
         if (!asignaturas.containsKey(asignatura_id)) {
-            throw new Exception ("la asignatura no existe!");
+            throw new Exception ("la asignatura "+asignatura_id+" no existe!");
         }
         return asignaturas.get(asignatura_id);
     }
 
     public static void editar (Asignatura asignatura) throws Exception {
         if (!asignaturas.containsKey(asignatura.getId())) {
-            throw new Exception ("la asignatura no existe!");
+            throw new Exception ("la asignatura "+asignatura.getId()+" no existe!");
         }
         asignaturas.put(asignatura.getId(), asignatura);
     }
     
     public static void eliminar (String asignatura_id) throws Exception {
         if (!asignaturas.containsKey(asignatura_id)) {
-            throw new Exception ("la asignatura no existe!");
+            throw new Exception ("la asignatura "+asignatura_id+" no existe!");
         }
         asignaturas.remove(asignatura_id);
     }

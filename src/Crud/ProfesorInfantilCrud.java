@@ -15,28 +15,28 @@ public class ProfesorInfantilCrud {
 
     public static void agregar(ProfesorInfantil profesorInfantil) throws Exception {
         if (profesoresInfantiles.containsKey(profesorInfantil.getId())) {
-            throw new Exception("el profesor infantil ya existe!");
+            throw new Exception("el profesor infantil "+profesorInfantil.getId()+" ya existe!");
         }
         profesoresInfantiles.put(profesorInfantil.getId(), profesorInfantil);
     }
 
     public static ProfesorInfantil buscar(String profesorInfantil_id) throws Exception {
         if (!profesoresInfantiles.containsKey(profesorInfantil_id)) {
-            throw new Exception("el profesor infantil no existe!");
+            throw new Exception("el profesor infantil "+profesorInfantil_id+" no existe!");
         }
         return profesoresInfantiles.get(profesorInfantil_id);
     }
 
     public static void editar(ProfesorInfantil profesorInfantil) throws Exception {
         if (!profesoresInfantiles.containsKey(profesorInfantil.getId())) {
-            throw new Exception("el profesor infantil no existe!");
+            throw new Exception("el profesor infantil "+profesorInfantil.getId()+" no existe!");
         }
         profesoresInfantiles.put(profesorInfantil.getId(), profesorInfantil);
     }
 
     public static void eliminar(String profesorInfantil_id) throws Exception {
         if (!profesoresInfantiles.containsKey(profesorInfantil_id)) {
-            throw new Exception("el profesor infantil no existe!");
+            throw new Exception("el profesor infantil "+profesorInfantil_id+" no existe!");
         }
         profesoresInfantiles.remove(profesorInfantil_id);
     }

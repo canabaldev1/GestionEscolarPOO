@@ -14,28 +14,28 @@ public class ClaseCrud {
     
     public static void agregar (Clase clase) throws Exception {
         if (clases.containsKey(clase.getId())) {
-            throw new Exception ("la clase ya existe!");
+            throw new Exception ("la clase "+clase.getId()+" ya existe!");
         }
         clases.put(clase.getId(), clase );
     }
 
     public static Clase buscar (String clase_id) throws Exception {
         if (!clases.containsKey(clase_id)) {
-            throw new Exception ("la clase no existe!");
+            throw new Exception ("la clase "+clase_id+" no existe!");
         }
         return clases.get(clase_id);
     }
 
     public static void editar (Clase clase) throws Exception {
         if (!clases.containsKey(clase.getId())) {
-            throw new Exception ("la clase no existe!");
+            throw new Exception ("la clase "+clase.getId()+" no existe!");
         }
         clases.put(clase.getId(), clase);
     }
     
     public static void eliminar (String clase_id) throws Exception {
         if (!clases.containsKey(clase_id)) {
-            throw new Exception ("la clase no existe!");
+            throw new Exception ("la clase "+clase_id+" no existe!");
         }
         clases.remove(clase_id);
     }

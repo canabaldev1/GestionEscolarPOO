@@ -14,28 +14,28 @@ public class CicloAcademicoCrud {
     
     public static void agregar (CicloAcademico cicloAcademico) throws Exception {
         if (ciclosAcademicos.containsKey(cicloAcademico.getId())) {
-            throw new Exception ("el ciclo academico ya existe!");
+            throw new Exception ("el ciclo academico "+cicloAcademico.getId()+" ya existe!");
         }
         ciclosAcademicos.put(cicloAcademico.getId(), cicloAcademico );
     }
 
     public static CicloAcademico buscar (String cicloAcademico_id) throws Exception {
         if (!ciclosAcademicos.containsKey(cicloAcademico_id)) {
-            throw new Exception ("el ciclo academicono existe!");
+            throw new Exception ("el ciclo academicono "+cicloAcademico_id+" existe!");
         }
         return ciclosAcademicos.get(cicloAcademico_id);
     }
 
     public static void editar (CicloAcademico cicloAcademico) throws Exception {
         if (!ciclosAcademicos.containsKey(cicloAcademico.getId())) {
-            throw new Exception ("el ciclo academicono existe!");
+            throw new Exception ("el ciclo academicono "+cicloAcademico.getId()+" existe!");
         }
         ciclosAcademicos.put(cicloAcademico.getId(), cicloAcademico);
     }
     
     public static void eliminar (String cicloAcademico_id) throws Exception {
         if (!ciclosAcademicos.containsKey(cicloAcademico_id)) {
-            throw new Exception ("el ciclo academicono existe!");
+            throw new Exception ("el ciclo academicono "+cicloAcademico_id+" existe!");
         }
         ciclosAcademicos.remove(cicloAcademico_id);
     }
