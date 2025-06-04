@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "conexion_carlos_canabal_vsc",
+            "database": "gestion_escolar",
+            "username": "carlos_canabal",
+            "password": "Carlos123"
+        }
+    ]
+}
