@@ -4,21 +4,37 @@
  */
 package Dominio;
 
+import java.io.Serializable;
 import java.time.LocalDate;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 /**
  *
  * @author lm-carlos
  */
-public abstract class Usuario {
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 
+public abstract class Usuario implements Serializable {
+    @Id 
+    @Column (name= "id", length = 10, nullable = false, unique = true)
     protected String id;
+    @Column (length = 50, nullable = false)
     protected String nombres;
+    @Column (length = 50, nullable = false)
     protected String apellidos;
     protected LocalDate fechaNacimiento;
+    @Column (length = 20, nullable = false)
     protected String contrasena;
+    @Column (length = 20)
     protected String direccion;
+    @Column (length = 50, nullable = false, unique = true)
     protected String email;
+    @Column (length = 20)
     protected String telefono;
 
     // CONSTRUCTORES

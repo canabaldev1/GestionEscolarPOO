@@ -5,19 +5,31 @@
 package Dominio;
 
 import Dominio.Constantes.PrioridadAsignatura;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author lm-carlos
  */
-public class Asignatura {
-
+@Entity
+public class Asignatura implements Serializable {
+    
+    @Id
     private String id;
     private String nombre;
     private String descripcion;
+    
+    @Enumerated (EnumType.STRING)
     private PrioridadAsignatura prioridad;
+    
+    @OneToMany (mappedBy = "asignatura")
     private List<Clase> clases;
 
     // CONSTRUCTORES

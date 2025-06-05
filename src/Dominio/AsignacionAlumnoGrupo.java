@@ -5,17 +5,33 @@
 package Dominio;
 
 import Dominio.Constantes.EstadoAsignacionGrupo;
+import java.io.Serializable;
 import java.time.LocalDate;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author lm-carlos
  */
-public class AsignacionAlumnoGrupo {
+@Entity
+public class AsignacionAlumnoGrupo implements Serializable {
 
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+//    @JoinColumn(name = "alumno_id")
     private Alumno alumno;
+
+    @ManyToOne
+//    @JoinColumn(name = "grupo_id")
     private Grupo grupo;
+
     private LocalDate fechaInicioInscripcion;
     private LocalDate fechaFinInscripcion;
     private EstadoAsignacionGrupo estado;
@@ -25,25 +41,15 @@ public class AsignacionAlumnoGrupo {
     }
 
     public AsignacionAlumnoGrupo(
-            String id,
             Alumno alumno,
             Grupo grupo) {
-        this.id = id;
         this.alumno = alumno;
         this.grupo = grupo;
     }
 
     //GETTERS Y SETTERS
-    public String getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        if (id != null && !id.trim().isEmpty()) {
-            this.id = id;
-        } else {
-            throw new IllegalArgumentException("El ID no puede ser nulo o vacío.");
-        }
     }
 
     public Alumno getAlumno() {

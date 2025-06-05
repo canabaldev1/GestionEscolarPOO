@@ -5,13 +5,16 @@
 package Dominio;
 
 import Dominio.Constantes.AreaAdministrativa;
+import java.io.Serializable;
 import java.time.LocalDate;
+import javax.persistence.Entity;
 
 /**
  *
  * @author lm-carlos
  */
-public class Administrativo extends Empleado {
+@Entity
+public class Administrativo extends Empleado implements Serializable{
 
     private AreaAdministrativa areaAdministrativa;
 

@@ -5,11 +5,19 @@
 package Dominio;
 
 import java.time.LocalDate;
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
 /**
  *
  * @author lm-carlos
  */
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+
 public abstract class Profesor extends Empleado {
 
     protected String titulacionAcademica;

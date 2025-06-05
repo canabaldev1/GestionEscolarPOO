@@ -5,32 +5,45 @@
 package Dominio;
 
 import Dominio.Constantes.ParentescoAcudiente;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author lm-carlos
  */
-public class Alumno extends Usuario {
+@Entity
+public class Alumno extends Usuario implements Serializable{
 
     private String nombreAcudiente;
     private String apellidoAcudiente;
     private ParentescoAcudiente parentesco;
+    @OneToMany(mappedBy = "alumno")
     private List<Matricula> matriculas;
-    private List<AsignacionAlumnoGrupo> grupos;
-    private List<AsistenciaSesion> sesiones;
-    private List<DesempenoAlumno> clases;
-    private List<AsignacionAlumnoServicio> serviciosComplementarios;
+
+    @OneToMany(mappedBy = "alumno")
+    private List<AsignacionAlumnoGrupo> asignacionesAlumnoGrupo;
+
+    @OneToMany(mappedBy = "alumno")
+    private List<AsistenciaSesion> asistenciaSesiones;
+
+    @OneToMany(mappedBy = "alumno")
+    private List<DesempenoAlumno> desempenoAlumno;
+
+    @OneToMany(mappedBy = "alumno")
+    private List<AsignacionAlumnoServicio> asignacionesAlumnoServicios;
 
     // CONSTRUCTORES
     public Alumno() {
         super();
         this.matriculas = new ArrayList<>();
-        this.grupos = new ArrayList<>();
-        this.sesiones = new ArrayList<>();
-        this.clases = new ArrayList<>();
-        this.serviciosComplementarios = new ArrayList<>();
+        this.asignacionesAlumnoGrupo = new ArrayList<>();
+        this.asistenciaSesiones = new ArrayList<>();
+        this.desempenoAlumno = new ArrayList<>();
+        this.asignacionesAlumnoServicios = new ArrayList<>();
     }
 
     public Alumno(
@@ -41,10 +54,10 @@ public class Alumno extends Usuario {
             String email) {
         super(id, nombres, apellidos, contrasena, email);
         this.matriculas = new ArrayList<>();
-        this.grupos = new ArrayList<>();
-        this.sesiones = new ArrayList<>();
-        this.clases = new ArrayList<>();
-        this.serviciosComplementarios = new ArrayList<>();
+        this.asignacionesAlumnoGrupo = new ArrayList<>();
+        this.asistenciaSesiones = new ArrayList<>();
+        this.desempenoAlumno = new ArrayList<>();
+        this.asignacionesAlumnoServicios = new ArrayList<>();
     }
 
     // GETTERS Y SETTERS
@@ -97,48 +110,48 @@ public class Alumno extends Usuario {
     }
 
     public List<AsignacionAlumnoGrupo> getAsignacionesAGrupos() {
-        return grupos;
+        return asignacionesAlumnoGrupo;
     }
 
     public void setAsignacionesAGrupos(List<AsignacionAlumnoGrupo> asignacionesAGrupos) {
         if (asignacionesAGrupos != null) {
-            this.grupos = asignacionesAGrupos;
+            this.asignacionesAlumnoGrupo = asignacionesAGrupos;
         } else {
             throw new IllegalArgumentException("La lista de asignaciones a grupos no puede ser nula.");
         }
     }
 
     public List<AsistenciaSesion> getAsistencias() {
-        return sesiones;
+        return asistenciaSesiones;
     }
 
     public void setAsistencias(List<AsistenciaSesion> asistencias) {
         if (asistencias != null) {
-            this.sesiones = asistencias;
+            this.asistenciaSesiones = asistencias;
         } else {
             throw new IllegalArgumentException("La lista de asistencias no puede ser nula.");
         }
     }
 
     public List<DesempenoAlumno> getDesempeno() {
-        return clases;
+        return desempenoAlumno;
     }
 
     public void setDesempeno(List<DesempenoAlumno> desempeno) {
         if (desempeno != null) {
-            this.clases = desempeno;
+            this.desempenoAlumno = desempeno;
         } else {
             throw new IllegalArgumentException("La lista de desempeño no puede ser nula.");
         }
     }
 
     public List<AsignacionAlumnoServicio> getAsignacionesDeServicios() {
-        return serviciosComplementarios;
+        return asignacionesAlumnoServicios;
     }
 
     public void setAsignacionesDeServicios(List<AsignacionAlumnoServicio> asignacionesDeServicios) {
         if (asignacionesDeServicios != null) {
-            this.serviciosComplementarios = asignacionesDeServicios;
+            this.asignacionesAlumnoServicios = asignacionesDeServicios;
         } else {
             throw new IllegalArgumentException("La lista de asignaciones de servicios no puede ser nula.");
         }
@@ -154,32 +167,32 @@ public class Alumno extends Usuario {
     }
 
     public void addGrupo(AsignacionAlumnoGrupo grupo) {
-        if (grupo != null && !this.grupos.contains(grupo)) {
-            this.grupos.add(grupo);
+        if (grupo != null && !this.asignacionesAlumnoGrupo.contains(grupo)) {
+            this.asignacionesAlumnoGrupo.add(grupo);
         } else {
             throw new IllegalArgumentException("El grupo no puede ser nulo o ya existe en la lista.");
         }
     }
 
     public void addSesion(AsistenciaSesion sesion) {
-        if (sesion != null && !this.sesiones.contains(sesion)) {
-            this.sesiones.add(sesion);
+        if (sesion != null && !this.asistenciaSesiones.contains(sesion)) {
+            this.asistenciaSesiones.add(sesion);
         } else {
             throw new IllegalArgumentException("La sesión no puede ser nula o ya existe en la lista.");
         }
     }
 
     public void addClase(DesempenoAlumno clase) {
-        if (clase != null && !this.clases.contains(clase)) {
-            this.clases.add(clase);
+        if (clase != null && !this.desempenoAlumno.contains(clase)) {
+            this.desempenoAlumno.add(clase);
         } else {
             throw new IllegalArgumentException("La clase no puede ser nula o ya existe en la lista.");
         }
     }
 
     public void addServicioComplementario(AsignacionAlumnoServicio servicio) {
-        if (servicio != null && !this.serviciosComplementarios.contains(servicio)) {
-            this.serviciosComplementarios.add(servicio);
+        if (servicio != null && !this.asignacionesAlumnoServicios.contains(servicio)) {
+            this.asignacionesAlumnoServicios.add(servicio);
         } else {
             throw new IllegalArgumentException("El servicio complementario no puede ser nulo o ya existe en la lista.");
         }
@@ -200,10 +213,10 @@ public class Alumno extends Usuario {
                 + "Apellido Acudiente:     " + apellidoAcudiente + "\n"
                 + "Parentesco Acudiente:   " + parentesco + "\n"
                 + "Matriculas:             " + matriculas.size() + "\n"
-                + "Grupos:                 " + grupos.size() + "\n"
-                + "Sesiones:               " + sesiones.size() + "\n"
-                + "Clases:                 " + clases.size() + "\n"
-                + "Servicios Complementarios: " + serviciosComplementarios.size() + "\n");
+                + "Grupos:                 " + asignacionesAlumnoGrupo.size() + "\n"
+                + "Sesiones:               " + asistenciaSesiones.size() + "\n"
+                + "Clases:                 " + desempenoAlumno.size() + "\n"
+                + "Servicios Complementarios: " + asignacionesAlumnoServicios.size() + "\n");
     }
 
 }

@@ -5,20 +5,34 @@
 package Dominio;
 
 import Dominio.Constantes.TipoNivelEducativo;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author lm-carlos
  */
-public class NivelEducativo {
+@Entity
+public class NivelEducativo implements Serializable {
 
+    @Id
     private String id;
     private String nombre;
     private String descripcion;
+
+    @Enumerated(EnumType.STRING)
     private TipoNivelEducativo tipo;
+
+    @OneToMany
     private List<Curso> cursos;
+
+    @OneToMany
     private List<Modalidad> modalidadesDisponibles;
 
     // CONSTRUCTORES
@@ -121,6 +135,7 @@ public class NivelEducativo {
             throw new IllegalArgumentException("El curso no puede ser nulo o ya existe en la lista.");
         }
     }
+
     //    private List<Modalidad> modalidadesDisponibles;
     public void addModalidad(Modalidad modalidad) {
         if (modalidad != null && !this.modalidadesDisponibles.contains(modalidad)) {
@@ -129,7 +144,6 @@ public class NivelEducativo {
             throw new IllegalArgumentException("La modalidad no puede ser nula o ya existe en la lista.");
         }
     }
-    
 
     @Override
     public String toString() {

@@ -4,37 +4,42 @@
  */
 package Dominio;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 /**
  *
  * @author lm-carlos
  */
-public class HorarioClase {
+@Entity
+public class HorarioClase implements Serializable {
 
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
     private Clase clase;
+
+    @ManyToOne
     private BloqueHorario bloqueHorario;
 
     // CONSTRUCTORES
     public HorarioClase() {
     }
 
-    public HorarioClase(String id, Clase clase, BloqueHorario bloqueHorario) {
-        this.id = id;
+    public HorarioClase(Clase clase, BloqueHorario bloqueHorario) {
         this.clase = clase;
         this.bloqueHorario = bloqueHorario;
     }
 
     // SETTERS Y GETTERS
-    public String getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        if (id != null) {
-            this.id = id;
-        } else {
-            throw new IllegalArgumentException("El id no puede ser nulo.");
-        }
     }
 
     public Clase getClase() {
@@ -65,8 +70,8 @@ public class HorarioClase {
     public String toString() {
         return ("Horario Clase\n" + "--------------------------\n"
                 + "ID :                          " + id + "\n"
-                + "Bloque Horario:               " + bloqueHorario.getId()+ "\n"
-                + "Clase:                        " + clase.getId()+ "\n");
+                + "Bloque Horario:               " + bloqueHorario.getId() + "\n"
+                + "Clase:                        " + clase.getId() + "\n");
     }
 
 }

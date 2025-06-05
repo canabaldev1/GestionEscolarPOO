@@ -4,19 +4,30 @@
  */
 package Dominio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author lm-carlos
  */
-public class Modalidad {
-
+@Entity
+public class Modalidad implements Serializable {
+    
+    @Id
     private String id;
     private String nombre;
     private String descripcion;
+    
+    @ManyToOne
     private NivelEducativo nivelEducativo;
+    
+    @OneToMany
     private List<Curso> cursos;
 
     // CONSTRUCTORES

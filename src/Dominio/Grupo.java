@@ -4,20 +4,38 @@
  */
 package Dominio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author lm-carlos
  */
-public abstract class Grupo {
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Grupo implements Serializable {
 
+    @Id
     protected String id;
     protected String nombre;
+
+    @ManyToOne
     protected Curso curso;
+    
+    @OneToMany (mappedBy = "grupo")
     protected List<AsignacionAlumnoGrupo> alumnos;
-    protected Aula aula;
+
+    @ManyToOne
+    protected Aula aula;    
+    
+    @ManyToOne
     protected CicloAcademico cicloAcademico;
 
     // CONSTRUCTORES

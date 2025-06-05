@@ -4,20 +4,30 @@
  */
 package Dominio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author lm-carlos
  */
-public class Aula {
-
+@Entity
+public class Aula implements Serializable {
+    
+    @Id
     private String id;
     private String nombre;
     private int capacidad;
     private String ubicacion;
+    
+    @OneToMany
     private List<Grupo> grupos;
+    
+    @OneToMany
     private List<Sesion> sesiones;
 
     // CONSTRUCTORES

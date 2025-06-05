@@ -5,20 +5,32 @@
 package Dominio;
 
 import Dominio.Constantes.EstadoBeca;
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author lm-carlos
  */
-public class Beca {
-
+@Entity
+public class Beca implements Serializable {
+    
+    @Id
     private String id;
     private String nombre;
     private String descripcion;
     private double valorDescuento;
     private String observaciones;
     private String otorgadaPor;
+    
+    @Enumerated (EnumType.STRING)
     private EstadoBeca estado;
+    
+    @OneToOne
     private Matricula matricula;
 
     // CONSTRUCTORES

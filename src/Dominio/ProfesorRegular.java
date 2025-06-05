@@ -7,15 +7,22 @@ package Dominio;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author lm-carlos
  */
+@Entity
 public class ProfesorRegular extends Profesor {
-
+    
+    @OneToMany (mappedBy = "profesor")
     private List<Clase> clases;
-    private GrupoRegular grupo;
+    
+    @OneToMany (mappedBy = "profesorEncargado")
+    private List<GrupoRegular> grupo;
 
     // CONSTRUCTORES
     public ProfesorRegular() {
@@ -53,11 +60,11 @@ public class ProfesorRegular extends Profesor {
         }
     }
 
-    public GrupoRegular getGrupo() {
+    public List<GrupoRegular> getGrupo() {
         return grupo;
     }
 
-    public void setGrupo(GrupoRegular grupo) {
+    public void setGrupo(List<GrupoRegular> grupo) {
         if (grupo != null) {
             this.grupo = grupo;
         } else {
@@ -93,7 +100,7 @@ public class ProfesorRegular extends Profesor {
                 + "Estado:                 " + estado + "\n"
                 + "Contratos:              " + contratos.size() + "\n"
                 + "Titulación Académica:   " + titulacionAcademica + "\n"
-                + "Grupo Regular:          " + (grupo != null ? grupo.getNombre() : "Sin grupo") + "\n"
+                + "Grupo Regular:          " + grupo.size() + "\n"
                 + "Cantidad de Clases:     " + clases.size() + "\n");
     }
 

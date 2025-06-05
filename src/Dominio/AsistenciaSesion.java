@@ -4,14 +4,28 @@
  */
 package Dominio;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 /**
  *
  * @author lm-carlos
  */
-public class AsistenciaSesion {
+@Entity
+public class AsistenciaSesion implements Serializable {
 
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
     private Alumno alumno;
+
+    @ManyToOne
     private Sesion sesion;
     private boolean presente;
     private String observaciones;
@@ -21,27 +35,17 @@ public class AsistenciaSesion {
     }
 
     public AsistenciaSesion(
-            String id,
             Alumno alumno,
             Sesion sesion,
             boolean presente) {
-        this.id = id;
         this.alumno = alumno;
         this.sesion = sesion;
         this.presente = presente;
     }
 
     //GETTERS Y SETTERS
-    public String getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        if (id != null && !id.trim().isEmpty()) {
-            this.id = id;
-        } else {
-            throw new IllegalArgumentException("El ID no puede ser nulo o vacío.");
-        }
     }
 
     public Alumno getAlumno() {

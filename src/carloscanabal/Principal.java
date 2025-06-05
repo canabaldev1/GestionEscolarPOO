@@ -58,6 +58,7 @@ import Dominio.ProfesorInfantil;
 import Dominio.ProfesorRegular;
 import Dominio.ServicioComplementario;
 import Dominio.Sesion;
+import Infraestructura.Configuracion.BD.ConexionBD;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -72,7 +73,7 @@ public class Principal {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws InterruptedException {
+    /*public static void main(String[] args) throws InterruptedException {
 
         // Ahora se procede a instanciar objetos utilizando las clases. Primero,
         // se instanciará un objeto con el constructor por defecto y luego otro
@@ -2606,6 +2607,16 @@ System.out.println("\n----- SERVICIO COMPLEMENTARIO -----\n");
         // Ahora listo todo nuevamente, en esta ocasión solo debe mostrar a servicio complementario 1
         System.out.println(ServicioComplementarioCrud.listarTodo());
         
+        
+    }*/
+    
+    public static void main(String[] args) throws InterruptedException {
+
+        System.out.println("Prueba base de datos");
+        
+        ConexionBD.conectar();
+        
+        ConexionBD.desconectar();
         
     }
 

@@ -5,14 +5,24 @@
 package Dominio;
 
 import java.time.LocalDate;
+import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author lm-carlos
  */
-public class ProfesorInfantil extends Profesor {
+@Entity
 
-    private GrupoInfantil grupo;
+public class ProfesorInfantil extends Profesor {
+    
+    @OneToMany(mappedBy = "profesorEncargado")
+    private List<GrupoInfantil> gruposEncargados;
+
+    @OneToMany(mappedBy = "profesorAsistente")
+    private List<GrupoInfantil> gruposAsistentes;
 
     // CONSTRUCTORES
     public ProfesorInfantil() {
@@ -36,13 +46,25 @@ public class ProfesorInfantil extends Profesor {
     }
 
     // GETTERS Y SETTERS
-    public GrupoInfantil getGrupo() {
-        return grupo;
+    public List<GrupoInfantil> getGruposEncargados() {
+        return gruposEncargados;
     }
 
-    public void setGrupo(GrupoInfantil grupo) {
-        if (grupo != null) {
-            this.grupo = grupo;
+    public void setGrupoEncargados(List<GrupoInfantil> gruposEncargados) {
+        if (gruposEncargados != null) {
+            this.gruposEncargados = gruposEncargados;
+        } else {
+            throw new IllegalArgumentException("El grupo infantil no puede ser nulo.");
+        }
+    }
+
+    public List<GrupoInfantil> getGruposAsistentes() {
+        return gruposAsistentes;
+    }
+
+    public void setGruposAsistentes(List<GrupoInfantil> gruposAsistentes) {
+        if (gruposAsistentes != null) {
+            this.gruposAsistentes = gruposAsistentes;
         } else {
             throw new IllegalArgumentException("El grupo infantil no puede ser nulo.");
         }
@@ -67,7 +89,8 @@ public class ProfesorInfantil extends Profesor {
                 + "Estado:                 " + estado + "\n"
                 + "Contratos:              " + contratos.size() + "\n"
                 + "Titulación Académica:   " + titulacionAcademica + "\n"
-                + "Grupo Infantil:         " + (grupo != null ? grupo.getNombre() : "Sin grupo") + "\n");
+                + "Grupos Encargados:         " + gruposEncargados.size()  + "\n"
+                + "Grupos Asistentes:         " + gruposAsistentes.size()  + "\n");
     }
     
 }

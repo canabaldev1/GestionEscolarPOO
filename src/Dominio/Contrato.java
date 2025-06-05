@@ -6,23 +6,39 @@ package Dominio;
 
 import Dominio.Constantes.EstadoContrato;
 import Dominio.Constantes.TipoContrato;
+import java.io.Serializable;
 import java.time.LocalDate;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author lm-carlos
  */
-public class Contrato {
-
+@Entity
+public class Contrato implements Serializable {
+    
+    @Id
     private String id;
+    
+    @Enumerated (EnumType.STRING)
     private TipoContrato tipo;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private int valorSalario;
+    
+    @Enumerated (EnumType.STRING)
     private EstadoContrato estado;
     private String observaciones;
     private String cargo;
+    
+    @ManyToOne
     private Empleado empleado;
+    
+    @ManyToOne
     private CicloAcademico cicloAcademico;
 
     // CONSTRUCTORES

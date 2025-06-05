@@ -5,24 +5,39 @@
 package Dominio;
 
 import Dominio.Constantes.EstadoServicioComplementario;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author lm-carlos
  */
-public class ServicioComplementario {
-
+@Entity
+public class ServicioComplementario implements Serializable {
+    
+    @Id
     private String id;
     private String nombre;
     private String descripcion;
     private double valor;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
+    
+    @Enumerated(EnumType.STRING)
     private EstadoServicioComplementario estado;
+    
+    @OneToMany
     private List<AsignacionAlumnoServicio> alumnosBeneficiados;
+    
+    @ManyToOne
     private CicloAcademico cicloAcademico;
 
     // CONSTRUCTORES

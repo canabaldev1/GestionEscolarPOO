@@ -4,22 +4,43 @@
  */
 package Dominio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author lm-carlos
  */
-public class Clase {
+@Entity
+public class Clase implements Serializable {
 
+    @Id
     private String id;
+
+    @ManyToOne
     private GrupoRegular grupo;
+    
+    @ManyToOne
     private ProfesorRegular profesor;
+
+    @OneToMany(mappedBy = "clase")
     private List<HorarioClase> bloquesHorarios;
+    
+    @ManyToOne
     private Asignatura asignatura;
+
+    @OneToMany(mappedBy = "clase")
     private List<Sesion> sesiones;
+
+    @ManyToOne
     private CicloAcademico cicloAcademico;
+
+    @OneToMany(mappedBy = "clase")
     private List<DesempenoAlumno> alumnos;
 
     // CONSTRUCTORES

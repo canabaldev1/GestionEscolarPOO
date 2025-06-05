@@ -9,19 +9,35 @@ import Dominio.Constantes.TipoCuenta;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author lm-carlos
  */
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+
 public abstract class Empleado extends Usuario {
 
     protected String profesion;
     protected String numeroCuentaBancaria;
+    
+    @Enumerated(EnumType.STRING)
     protected TipoCuenta tipoCuentaBancaria;
     protected String bancoAsociado;
     protected LocalDate fechaIngreso;
+    
+    @Enumerated(EnumType.STRING)
     protected EstadoEmpleado estado;
+
+    @OneToMany (mappedBy = "empleado")
     protected List<Contrato> contratos;
 
     // CONSTRUCTORES

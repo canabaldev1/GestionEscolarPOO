@@ -4,13 +4,21 @@
  */
 package Dominio;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+
 /**
  *
  * @author lm-carlos
  */
-public class GrupoInfantil extends Grupo {
-
+@Entity
+public class GrupoInfantil extends Grupo implements Serializable {
+    
+    @ManyToOne
     private ProfesorInfantil profesorEncargado;
+    
+    @ManyToOne
     private ProfesorInfantil profesorAsistente;
 
     // CONSTRUCTORES

@@ -5,21 +5,31 @@
 package Dominio;
 
 import Dominio.Constantes.DiaSemana;
+import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author lm-carlos
  */
-public class BloqueHorario {
-
+@Entity
+public class BloqueHorario implements Serializable {
+    
+    @Id 
     private String id;
     private DiaSemana dia;
     private LocalTime horaInicio;
     private LocalTime horaFin;
+    
+    @OneToMany (mappedBy = "bloqueHorario")
     private List<HorarioClase> clases;
+    
+    @OneToMany (mappedBy = "bloqueHorario")
     private List<Sesion> sesiones;
 
     // CONSTRUCTORES

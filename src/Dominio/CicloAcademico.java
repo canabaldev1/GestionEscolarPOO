@@ -5,26 +5,47 @@
 package Dominio;
 
 import Dominio.Constantes.EstadoCicloAcademico;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author lm-carlos
  */
-public class CicloAcademico {
-
+@Entity
+public class CicloAcademico implements Serializable {
+    
+    @Id
     private String id;
     private int anio;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
+    
+    @Enumerated (value = EnumType.STRING)
     private EstadoCicloAcademico estado;
+    
     private int cantidadSemanas;
+    
+    @OneToMany (mappedBy = "cicloAcademico")
     private List<Matricula> matriculas;
+    
+    @OneToMany (mappedBy = "cicloAcademico")
     private List<Contrato> contratos;
+    
+    @OneToMany (mappedBy = "cicloAcademico")
     private List<Grupo> grupos;
+    
+    @OneToMany (mappedBy = "cicloAcademico")
     private List<Clase> clases;
+    
+    @OneToMany (mappedBy = "cicloAcademico")
     private List<ServicioComplementario> serviciosComplementarios;
 
     // CONSTRUCTORES

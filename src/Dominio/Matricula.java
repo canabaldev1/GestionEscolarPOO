@@ -5,25 +5,43 @@
 package Dominio;
 
 import Dominio.Constantes.EstadoMatricula;
-import java.time.LocalDate;
+import java.io.Serializable;
 import java.time.LocalDateTime;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author lm-carlos
  */
-public class Matricula {
+@Entity
+public class Matricula implements Serializable {
 
+    @Id
     private String id;
     private LocalDateTime fechaMatricula;
+    
+    @Enumerated (EnumType.STRING)
     private EstadoMatricula estado;
     private LocalDateTime fechaPago;
     private int valorMatricula;
     private int valorMensualidad;
     private String observaciones;
+    
+    @ManyToOne
     private Alumno alumno;
+    
+    @ManyToOne
     private CicloAcademico cicloAcademico;
+    
+    @ManyToOne
     private Curso curso;
+    
+    @OneToOne
     private Beca beca;
 
     // CONSTRUCTORES

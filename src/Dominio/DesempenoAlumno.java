@@ -5,21 +5,40 @@
 package Dominio;
 
 import Dominio.Constantes.EstadoDesempenoEstudiante;
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author lm-carlos
  */
-public class DesempenoAlumno {
 
-    private String id;
+@Entity
+public class DesempenoAlumno implements Serializable {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
     private Alumno alumno;
+    
+    @ManyToOne
     private Clase clase;
+    
     private String observaciones;
     private double notaPrimerTrimestre;
     private double notaSegundoTrimestre;
     private double notaTercerTrimestre;
     private double notaHabilitacion;
+    
+    @Enumerated (EnumType.STRING)
     private EstadoDesempenoEstudiante estado;
 
     //CONSTRUCTORES
@@ -30,26 +49,16 @@ public class DesempenoAlumno {
     ;
     
     public DesempenoAlumno(
-            String id,
             Alumno alumno,
             Clase clase) {
-        this.id = id;
         this.alumno = alumno;
         this.clase = clase;
         this.estado = EstadoDesempenoEstudiante.EN_CURSO;
     }
 
     //GETTERS Y SETTERS
-    public String getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        if (id != null && !id.trim().isEmpty()) {
-            this.id = id;
-        } else {
-            throw new IllegalArgumentException("El ID no puede ser nulo o vacío.");
-        }
     }
 
     public Alumno getAlumno() {
