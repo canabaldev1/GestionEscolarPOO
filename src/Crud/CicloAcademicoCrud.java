@@ -13,10 +13,10 @@ public class CicloAcademicoCrud {
     public static HashMap<String, CicloAcademico> ciclosAcademicos = new HashMap<>();
     
     public static void agregar (CicloAcademico cicloAcademico) throws Exception {
-        if (ciclosAcademicos.containsKey(cicloAcademico.getId())) {
-            throw new Exception ("el ciclo academico "+cicloAcademico.getId()+" ya existe!");
+        if (ciclosAcademicos.containsKey(cicloAcademico.getId().toString())) {
+            throw new Exception ("el ciclo academico "+cicloAcademico.getId().toString()+" ya existe!");
         }
-        ciclosAcademicos.put(cicloAcademico.getId(), cicloAcademico );
+        ciclosAcademicos.put(cicloAcademico.getId().toString(), cicloAcademico );
     }
 
     public static CicloAcademico buscar (String cicloAcademico_id) throws Exception {
@@ -27,10 +27,10 @@ public class CicloAcademicoCrud {
     }
 
     public static void editar (CicloAcademico cicloAcademico) throws Exception {
-        if (!ciclosAcademicos.containsKey(cicloAcademico.getId())) {
-            throw new Exception ("el ciclo academicono "+cicloAcademico.getId()+" existe!");
+        if (!ciclosAcademicos.containsKey(cicloAcademico.getId().toString())) {
+            throw new Exception ("el ciclo academicono "+cicloAcademico.getId().toString()+" existe!");
         }
-        ciclosAcademicos.put(cicloAcademico.getId(), cicloAcademico);
+        ciclosAcademicos.put(cicloAcademico.getId().toString(), cicloAcademico);
     }
     
     public static void eliminar (String cicloAcademico_id) throws Exception {

@@ -14,10 +14,10 @@ public class AlumnoCrud {
     public static HashMap<String, Alumno> alumnos = new HashMap<>();
 
     public static void agregar(Alumno alumno) throws Exception {
-        if (alumnos.containsKey(alumno.getId())) {
-            throw new Exception("el alumno "+alumno.getId()+" ya existe!");
+        if (alumnos.containsKey(alumno.getId().toString())) {
+            throw new Exception("el alumno "+alumno.getId().toString()+" ya existe!");
         }
-        alumnos.put(alumno.getId(), alumno);
+        alumnos.put(alumno.getId().toString(), alumno);
     }
 
     public static Alumno buscar(String alumno_id) throws Exception {
@@ -28,10 +28,10 @@ public class AlumnoCrud {
     }
 
     public static void editar(Alumno alumno) throws Exception {
-        if (!alumnos.containsKey(alumno.getId())) {
-            throw new Exception("el alumno " + alumno.getId() + " no existe!");
+        if (!alumnos.containsKey(alumno.getId().toString())) {
+            throw new Exception("el alumno " + alumno.getId().toString() + " no existe!");
         }
-        alumnos.put(alumno.getId(), alumno);
+        alumnos.put(alumno.getId().toString(), alumno);
     }
 
     public static void eliminar(String alumno_id) throws Exception {

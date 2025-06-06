@@ -7,7 +7,10 @@ package Dominio;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -20,16 +23,19 @@ import javax.persistence.OneToMany;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+
 public abstract class Grupo implements Serializable {
 
     @Id
-    protected String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+     Long id;
+    
     protected String nombre;
 
     @ManyToOne
     protected Curso curso;
     
-    @OneToMany (mappedBy = "grupo")
+    @OneToMany (mappedBy = "grupo", cascade = CascadeType.ALL, orphanRemoval = true)
     protected List<AsignacionAlumnoGrupo> alumnos;
 
     @ManyToOne
@@ -44,11 +50,9 @@ public abstract class Grupo implements Serializable {
     }
 
     public Grupo(
-            String id,
             String nombre,
             Curso curso,
             CicloAcademico cicloAcademico) {
-        this.id = id;
         this.nombre = nombre;
         this.curso = curso;
         this.cicloAcademico = cicloAcademico;
@@ -56,16 +60,8 @@ public abstract class Grupo implements Serializable {
     }
 
     // GETTERS Y SETTERS
-    public String getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        if (id != null && !id.trim().isEmpty()) {
-            this.id = id;
-        } else {
-            throw new IllegalArgumentException("El ID no puede ser nulo o vacío.");
-        }
     }
 
     public String getNombre() {

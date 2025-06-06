@@ -14,10 +14,10 @@ public class ProfesorInfantilCrud {
     public static HashMap<String, ProfesorInfantil> profesoresInfantiles = new HashMap<>();
 
     public static void agregar(ProfesorInfantil profesorInfantil) throws Exception {
-        if (profesoresInfantiles.containsKey(profesorInfantil.getId())) {
-            throw new Exception("el profesor infantil "+profesorInfantil.getId()+" ya existe!");
+        if (profesoresInfantiles.containsKey(profesorInfantil.getId().toString())) {
+            throw new Exception("el profesor infantil "+profesorInfantil.getId().toString()+" ya existe!");
         }
-        profesoresInfantiles.put(profesorInfantil.getId(), profesorInfantil);
+        profesoresInfantiles.put(profesorInfantil.getId().toString(), profesorInfantil);
     }
 
     public static ProfesorInfantil buscar(String profesorInfantil_id) throws Exception {
@@ -28,10 +28,10 @@ public class ProfesorInfantilCrud {
     }
 
     public static void editar(ProfesorInfantil profesorInfantil) throws Exception {
-        if (!profesoresInfantiles.containsKey(profesorInfantil.getId())) {
-            throw new Exception("el profesor infantil "+profesorInfantil.getId()+" no existe!");
+        if (!profesoresInfantiles.containsKey(profesorInfantil.getId().toString())) {
+            throw new Exception("el profesor infantil "+profesorInfantil.getId().toString()+" no existe!");
         }
-        profesoresInfantiles.put(profesorInfantil.getId(), profesorInfantil);
+        profesoresInfantiles.put(profesorInfantil.getId().toString(), profesorInfantil);
     }
 
     public static void eliminar(String profesorInfantil_id) throws Exception {

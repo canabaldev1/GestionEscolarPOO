@@ -6,6 +6,7 @@ package Dominio;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -20,7 +21,7 @@ public class GrupoRegular extends Grupo {
     @ManyToOne
     private ProfesorRegular profesorEncargado;
     
-    @OneToMany (mappedBy = "grupo")
+    @OneToMany (mappedBy = "grupo", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Clase> clases;
 
     // CONSTRUCTORES
@@ -30,11 +31,10 @@ public class GrupoRegular extends Grupo {
     }
 
     public GrupoRegular(
-            String id,
             String nombre,
             Curso curso,
             CicloAcademico cicloAcademico) {
-        super(id, nombre, curso, cicloAcademico);
+        super( nombre, curso, cicloAcademico);
         this.clases = new ArrayList<>();
     }
 
@@ -77,7 +77,7 @@ public class GrupoRegular extends Grupo {
     @Override
     public String toString() {
         return ("Grupo\n" + "--------------------------\n"
-                + "ID :                          " + id + "\n"
+                + "ID :                          " + this.id + "\n"
                 + "Nombre:                       " + nombre + "\n"
                 + "Curso:                        " + (curso != null ? curso.getNombre() : "Sin curso") + "\n"
                 + "Cantidad de Alumnos:          " + alumnos.size() + "\n"

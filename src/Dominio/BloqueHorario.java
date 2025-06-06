@@ -9,7 +9,10 @@ import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -19,17 +22,19 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class BloqueHorario implements Serializable {
-    
-    @Id 
-    private String id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private DiaSemana dia;
     private LocalTime horaInicio;
     private LocalTime horaFin;
-    
-    @OneToMany (mappedBy = "bloqueHorario")
+
+    @OneToMany(mappedBy = "bloqueHorario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<HorarioClase> clases;
-    
-    @OneToMany (mappedBy = "bloqueHorario")
+
+    @OneToMany(mappedBy = "bloqueHorario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Sesion> sesiones;
 
     // CONSTRUCTORES
@@ -43,7 +48,6 @@ public class BloqueHorario implements Serializable {
             DiaSemana dia,
             LocalTime horaInicio,
             LocalTime horaFin) {
-        this.id = id;
         this.dia = dia;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
@@ -52,16 +56,8 @@ public class BloqueHorario implements Serializable {
     }
 
     // GETTERS Y SETTERS
-    public String getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        if (id != null && !id.trim().isEmpty()) {
-            this.id = id;
-        } else {
-            throw new IllegalArgumentException("El ID no puede ser nulo o vacío.");
-        }
     }
 
     public DiaSemana getDia() {

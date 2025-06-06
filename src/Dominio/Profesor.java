@@ -14,7 +14,6 @@ import javax.persistence.Table;
  *
  * @author lm-carlos
  */
-
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 
@@ -28,14 +27,12 @@ public abstract class Profesor extends Empleado {
     }
 
     public Profesor(
-            String id,
             String nombres,
             String apellidos,
             String contrasena,
             String email,
             LocalDate fechaIngreso) {
         super(
-                id,
                 nombres,
                 apellidos,
                 contrasena,
@@ -59,7 +56,7 @@ public abstract class Profesor extends Empleado {
     @Override
     public String toString() {
         return ("Profesor\n" + "--------------------------\n"
-                + "ID :                    " + id + "\n"
+                + "ID :                    " + this.id + "\n"
                 + "Nombres:                " + nombres + "\n"
                 + "Apellidos:              " + apellidos + "\n"
                 + "Fecha de Nacimiento:    " + fechaNacimiento + "\n"

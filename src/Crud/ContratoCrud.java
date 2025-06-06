@@ -13,10 +13,10 @@ public class ContratoCrud {
     public static HashMap<String, Contrato> contratos = new HashMap<>();
     
     public static void agregar (Contrato contrato) throws Exception {
-        if (contratos.containsKey(contrato.getId())) {
-            throw new Exception ("el contrato "+contrato.getId()+" ya existe!");
+        if (contratos.containsKey(contrato.getId().toString())) {
+            throw new Exception ("el contrato "+contrato.getId().toString()+" ya existe!");
         }
-        contratos.put(contrato.getId(), contrato );
+        contratos.put(contrato.getId().toString(), contrato );
     }
 
     public static Contrato buscar (String contrato_id) throws Exception {
@@ -27,10 +27,10 @@ public class ContratoCrud {
     }
 
     public static void editar (Contrato contrato) throws Exception {
-        if (!contratos.containsKey(contrato.getId())) {
-            throw new Exception ("el contrato "+contrato.getId()+" no existe!");
+        if (!contratos.containsKey(contrato.getId().toString())) {
+            throw new Exception ("el contrato "+contrato.getId().toString()+" no existe!");
         }
-        contratos.put(contrato.getId(), contrato);
+        contratos.put(contrato.getId().toString(), contrato);
     }
     
     public static void eliminar (String contrato_id) throws Exception {

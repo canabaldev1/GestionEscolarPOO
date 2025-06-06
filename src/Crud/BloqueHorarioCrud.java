@@ -13,10 +13,10 @@ public class BloqueHorarioCrud {
     public static HashMap<String, BloqueHorario> bloquesHorarios = new HashMap<>();
     
     public static void agregar (BloqueHorario bloqueHorario) throws Exception {
-        if (bloquesHorarios.containsKey(bloqueHorario.getId())) {
-            throw new Exception ("el bloque horario "+bloqueHorario.getId()+" ya existe!");
+        if (bloquesHorarios.containsKey(bloqueHorario.getId().toString())) {
+            throw new Exception ("el bloque horario "+bloqueHorario.getId().toString()+" ya existe!");
         }
-        bloquesHorarios.put(bloqueHorario.getId(), bloqueHorario );
+        bloquesHorarios.put(bloqueHorario.getId().toString(), bloqueHorario );
     }
 
     public static BloqueHorario buscar (String bloqueHorario_id) throws Exception {
@@ -27,10 +27,10 @@ public class BloqueHorarioCrud {
     }
 
     public static void editar (BloqueHorario bloqueHorario) throws Exception {
-        if (!bloquesHorarios.containsKey(bloqueHorario.getId())) {
-            throw new Exception ("el bloque horario "+bloqueHorario.getId()+" no existe!");
+        if (!bloquesHorarios.containsKey(bloqueHorario.getId().toString())) {
+            throw new Exception ("el bloque horario "+bloqueHorario.getId().toString()+" no existe!");
         }
-        bloquesHorarios.put(bloqueHorario.getId(), bloqueHorario);
+        bloquesHorarios.put(bloqueHorario.getId().toString(), bloqueHorario);
     }
     
     public static void eliminar (String bloqueHorario_id) throws Exception {

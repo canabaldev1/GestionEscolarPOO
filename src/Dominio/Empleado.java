@@ -6,9 +6,11 @@ package Dominio;
 
 import Dominio.Constantes.EstadoEmpleado;
 import Dominio.Constantes.TipoCuenta;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -24,7 +26,7 @@ import javax.persistence.OneToMany;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 
-public abstract class Empleado extends Usuario {
+public abstract class Empleado extends Usuario implements Serializable{
 
     protected String profesion;
     protected String numeroCuentaBancaria;
@@ -37,7 +39,7 @@ public abstract class Empleado extends Usuario {
     @Enumerated(EnumType.STRING)
     protected EstadoEmpleado estado;
 
-    @OneToMany (mappedBy = "empleado")
+    @OneToMany (mappedBy = "empleado", cascade = CascadeType.ALL, orphanRemoval = true)
     protected List<Contrato> contratos;
 
     // CONSTRUCTORES
@@ -47,13 +49,12 @@ public abstract class Empleado extends Usuario {
     }
 
     public Empleado(
-            String id,
             String nombres,
             String apellidos,
             String contrasena,
             String email,
             LocalDate fechaIngreso) {
-        super(id, nombres, apellidos, contrasena, email);
+        super(nombres, apellidos, contrasena, email);
         this.fechaIngreso = fechaIngreso;
         this.contratos = new ArrayList<>();
     }
@@ -155,7 +156,7 @@ public abstract class Empleado extends Usuario {
     @Override
     public String toString() {
         return ("Empleado\n" + "--------------------------\n"
-                + "ID :                    " + id + "\n"
+                + "ID :                    " + this.id + "\n"
                 + "Nombres:                " + nombres + "\n"
                 + "Apellidos:              " + apellidos + "\n"
                 + "Fecha de Nacimiento:    " + fechaNacimiento + "\n"

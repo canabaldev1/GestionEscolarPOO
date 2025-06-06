@@ -7,7 +7,10 @@ package Dominio;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -20,27 +23,28 @@ import javax.persistence.OneToMany;
 public class Clase implements Serializable {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @ManyToOne
     private GrupoRegular grupo;
-    
+
     @ManyToOne
     private ProfesorRegular profesor;
 
-    @OneToMany(mappedBy = "clase")
+    @OneToMany(mappedBy = "clase", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<HorarioClase> bloquesHorarios;
-    
+
     @ManyToOne
     private Asignatura asignatura;
 
-    @OneToMany(mappedBy = "clase")
+    @OneToMany(mappedBy = "clase", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Sesion> sesiones;
 
     @ManyToOne
     private CicloAcademico cicloAcademico;
 
-    @OneToMany(mappedBy = "clase")
+    @OneToMany(mappedBy = "clase", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DesempenoAlumno> alumnos;
 
     // CONSTRUCTORES
@@ -55,7 +59,6 @@ public class Clase implements Serializable {
             GrupoRegular grupo,
             Asignatura asignatura,
             CicloAcademico cicloAcademico) {
-        this.id = id;
         this.grupo = grupo;
         this.asignatura = asignatura;
         this.cicloAcademico = cicloAcademico;
@@ -65,16 +68,8 @@ public class Clase implements Serializable {
     }
 
     // GETTERS Y SETTERS
-    public String getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        if (id != null && !id.trim().isEmpty()) {
-            this.id = id;
-        } else {
-            throw new IllegalArgumentException("El ID no puede ser nulo o vacío.");
-        }
     }
 
     public GrupoRegular getGrupo() {

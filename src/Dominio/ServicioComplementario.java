@@ -9,9 +9,12 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -24,7 +27,9 @@ import javax.persistence.OneToMany;
 public class ServicioComplementario implements Serializable {
     
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     private String nombre;
     private String descripcion;
     private double valor;
@@ -34,7 +39,7 @@ public class ServicioComplementario implements Serializable {
     @Enumerated(EnumType.STRING)
     private EstadoServicioComplementario estado;
     
-    @OneToMany
+    @OneToMany (mappedBy = "servicioComplementario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AsignacionAlumnoServicio> alumnosBeneficiados;
     
     @ManyToOne
@@ -47,28 +52,16 @@ public class ServicioComplementario implements Serializable {
     }
 
     public ServicioComplementario(
-            String id,
             String nombre,
             CicloAcademico cicloAcademico) {
-        this.id = id;
         this.nombre = nombre;
-        this.descripcion = "";
-        this.estado = EstadoServicioComplementario.DISPONIBLE;
         this.cicloAcademico = cicloAcademico;
         this.alumnosBeneficiados = new ArrayList<>();
     }
 
     // GETTERS Y SETTERS
-    public String getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        if (id != null && !id.trim().isEmpty()) {
-            this.id = id;
-        } else {
-            throw new IllegalArgumentException("El ID no puede ser nulo o vacío.");
-        }
     }
 
     public String getNombre() {

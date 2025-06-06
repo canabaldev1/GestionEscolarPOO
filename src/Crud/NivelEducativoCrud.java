@@ -14,10 +14,10 @@ public class NivelEducativoCrud {
     public static HashMap<String, NivelEducativo> nivelesEducativos = new HashMap<>();
 
     public static void agregar(NivelEducativo nivelEducativo) throws Exception {
-        if (nivelesEducativos.containsKey(nivelEducativo.getId())) {
-            throw new Exception("el nivel educativo "+nivelEducativo.getId()+" ya existe!");
+        if (nivelesEducativos.containsKey(nivelEducativo.getId().toString())) {
+            throw new Exception("el nivel educativo "+nivelEducativo.getId().toString()+" ya existe!");
         }
-        nivelesEducativos.put(nivelEducativo.getId(), nivelEducativo);
+        nivelesEducativos.put(nivelEducativo.getId().toString(), nivelEducativo);
     }
 
     public static NivelEducativo buscar(String nivelEducativo_id) throws Exception {
@@ -28,10 +28,10 @@ public class NivelEducativoCrud {
     }
 
     public static void editar(NivelEducativo nivelEducativo) throws Exception {
-        if (!nivelesEducativos.containsKey(nivelEducativo.getId())) {
-            throw new Exception("el nivel educativo "+nivelEducativo.getId()+" no existe!");
+        if (!nivelesEducativos.containsKey(nivelEducativo.getId().toString())) {
+            throw new Exception("el nivel educativo "+nivelEducativo.getId().toString()+" no existe!");
         }
-        nivelesEducativos.put(nivelEducativo.getId(), nivelEducativo);
+        nivelesEducativos.put(nivelEducativo.getId().toString(), nivelEducativo);
     }
 
     public static void eliminar(String nivelEducativo_id) throws Exception {

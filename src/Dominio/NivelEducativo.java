@@ -8,9 +8,12 @@ import Dominio.Constantes.TipoNivelEducativo;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -22,17 +25,19 @@ import javax.persistence.OneToMany;
 public class NivelEducativo implements Serializable {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     private String nombre;
     private String descripcion;
 
     @Enumerated(EnumType.STRING)
     private TipoNivelEducativo tipo;
 
-    @OneToMany
+    @OneToMany (mappedBy = "nivelEducativo", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Curso> cursos;
 
-    @OneToMany
+    @OneToMany (mappedBy = "nivelEducativo", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Modalidad> modalidadesDisponibles;
 
     // CONSTRUCTORES
@@ -46,7 +51,6 @@ public class NivelEducativo implements Serializable {
             String id,
             String nombre,
             TipoNivelEducativo tipo) {
-        this.id = id;
         this.nombre = nombre;
         this.descripcion = "";
         this.tipo = tipo;
@@ -55,16 +59,8 @@ public class NivelEducativo implements Serializable {
     }
 
     // GETTERS Y SETTERS
-    public String getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        if (id != null && !id.trim().isEmpty()) {
-            this.id = id;
-        } else {
-            throw new IllegalArgumentException("El ID no puede ser nulo o vacío.");
-        }
     }
 
     public String getNombre() {

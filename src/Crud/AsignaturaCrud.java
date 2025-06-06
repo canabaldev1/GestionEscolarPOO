@@ -13,10 +13,10 @@ public class AsignaturaCrud {
     public static HashMap<String, Asignatura> asignaturas = new HashMap<>();
     
     public static void agregar (Asignatura asignatura) throws Exception {
-        if (asignaturas.containsKey(asignatura.getId())) {
-            throw new Exception ("la asignatura "+asignatura.getId()+" ya existe!");
+        if (asignaturas.containsKey(asignatura.getId().toString())) {
+            throw new Exception ("la asignatura "+asignatura.getId().toString()+" ya existe!");
         }
-        asignaturas.put(asignatura.getId(), asignatura );
+        asignaturas.put(asignatura.getId().toString(), asignatura );
     }
 
     public static Asignatura buscar (String asignatura_id) throws Exception {
@@ -27,10 +27,10 @@ public class AsignaturaCrud {
     }
 
     public static void editar (Asignatura asignatura) throws Exception {
-        if (!asignaturas.containsKey(asignatura.getId())) {
-            throw new Exception ("la asignatura "+asignatura.getId()+" no existe!");
+        if (!asignaturas.containsKey(asignatura.getId().toString())) {
+            throw new Exception ("la asignatura "+asignatura.getId().toString()+" no existe!");
         }
-        asignaturas.put(asignatura.getId(), asignatura);
+        asignaturas.put(asignatura.getId().toString(), asignatura);
     }
     
     public static void eliminar (String asignatura_id) throws Exception {

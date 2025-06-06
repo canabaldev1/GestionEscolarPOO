@@ -24,14 +24,12 @@ public class Administrativo extends Empleado implements Serializable{
     }
 
     public Administrativo(
-            String id,
             String nombres,
             String apellidos,
             String contrasena,
             String email,
             LocalDate fechaIngreso) {
         super(
-                id,
                 nombres,
                 apellidos,
                 contrasena,
@@ -55,7 +53,7 @@ public class Administrativo extends Empleado implements Serializable{
     @Override
     public String toString() {
         return ("Administrativo\n" + "--------------------------\n"
-                + "ID :                    " + id + "\n"
+                + "ID :                    " + this.id + "\n"
                 + "Nombres:                " + nombres + "\n"
                 + "Apellidos:              " + apellidos + "\n"
                 + "Fecha de Nacimiento:    " + fechaNacimiento + "\n"

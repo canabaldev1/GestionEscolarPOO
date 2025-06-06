@@ -6,9 +6,9 @@ package Dominio;
 
 import java.time.LocalDate;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 /**
  *
@@ -18,10 +18,10 @@ import javax.persistence.Table;
 
 public class ProfesorInfantil extends Profesor {
     
-    @OneToMany(mappedBy = "profesorEncargado")
+    @OneToMany(mappedBy = "profesorEncargado", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<GrupoInfantil> gruposEncargados;
 
-    @OneToMany(mappedBy = "profesorAsistente")
+    @OneToMany(mappedBy = "profesorAsistente", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<GrupoInfantil> gruposAsistentes;
 
     // CONSTRUCTORES
@@ -30,14 +30,12 @@ public class ProfesorInfantil extends Profesor {
     }
 
     public ProfesorInfantil(
-            String id,
             String nombres,
             String apellidos,
             String contrasena,
             String email,
             LocalDate fechaIngreso) {
         super(
-                id,
                 nombres,
                 apellidos,
                 contrasena,
@@ -73,7 +71,7 @@ public class ProfesorInfantil extends Profesor {
         @Override
     public String toString() {
         return ("Profesor Infantil\n" + "--------------------------\n"
-                + "ID :                    " + id + "\n"
+                + "ID :                    " + this.id + "\n"
                 + "Nombres:                " + nombres + "\n"
                 + "Apellidos:              " + apellidos + "\n"
                 + "Fecha de Nacimiento:    " + fechaNacimiento + "\n"

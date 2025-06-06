@@ -8,9 +8,12 @@ import Dominio.Constantes.PrioridadAsignatura;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -22,14 +25,16 @@ import javax.persistence.OneToMany;
 public class Asignatura implements Serializable {
     
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     private String nombre;
     private String descripcion;
     
     @Enumerated (EnumType.STRING)
     private PrioridadAsignatura prioridad;
     
-    @OneToMany (mappedBy = "asignatura")
+    @OneToMany (mappedBy = "asignatura", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Clase> clases;
 
     // CONSTRUCTORES
@@ -38,24 +43,14 @@ public class Asignatura implements Serializable {
     }
 
     public Asignatura(
-            String id,
             String nombre) {
-        this.id = id;
         this.nombre = nombre;
         this.clases = new ArrayList<>();
     }
 
     // GETTERS Y SETTERS
-    public String getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        if (id != null && !id.trim().isEmpty()) {
-            this.id = id;
-        } else {
-            throw new IllegalArgumentException("El ID de la asignatura no puede estar vacío.");
-        }
     }
 
     public String getNombre() {

@@ -9,6 +9,8 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
@@ -20,7 +22,9 @@ import javax.persistence.OneToOne;
 public class Beca implements Serializable {
     
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     private String nombre;
     private String descripcion;
     private double valorDescuento;
@@ -41,23 +45,14 @@ public class Beca implements Serializable {
             String id,
             String nombre,
             String otorgadaPor) {
-        this.id = id;
         this.nombre = nombre;
         this.otorgadaPor = otorgadaPor;
         this.estado = EstadoBeca.DISPONIBLE;
     }
 
     // GETTERS Y SETTERS
-    public String getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        if (id != null && !id.trim().isEmpty()) {
-            this.id = id;
-        } else {
-            throw new IllegalArgumentException("El ID no puede ser nulo o vacío.");
-        }
     }
 
     public String getNombre() {

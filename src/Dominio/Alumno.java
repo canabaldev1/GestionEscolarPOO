@@ -8,6 +8,7 @@ import Dominio.Constantes.ParentescoAcudiente;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
@@ -21,19 +22,19 @@ public class Alumno extends Usuario implements Serializable{
     private String nombreAcudiente;
     private String apellidoAcudiente;
     private ParentescoAcudiente parentesco;
-    @OneToMany(mappedBy = "alumno")
+    @OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Matricula> matriculas;
 
-    @OneToMany(mappedBy = "alumno")
+    @OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AsignacionAlumnoGrupo> asignacionesAlumnoGrupo;
 
-    @OneToMany(mappedBy = "alumno")
+    @OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AsistenciaSesion> asistenciaSesiones;
 
-    @OneToMany(mappedBy = "alumno")
+    @OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DesempenoAlumno> desempenoAlumno;
 
-    @OneToMany(mappedBy = "alumno")
+    @OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AsignacionAlumnoServicio> asignacionesAlumnoServicios;
 
     // CONSTRUCTORES
@@ -52,7 +53,7 @@ public class Alumno extends Usuario implements Serializable{
             String apellidos,
             String contrasena,
             String email) {
-        super(id, nombres, apellidos, contrasena, email);
+        super(nombres, apellidos, contrasena, email);
         this.matriculas = new ArrayList<>();
         this.asignacionesAlumnoGrupo = new ArrayList<>();
         this.asistenciaSesiones = new ArrayList<>();
@@ -201,7 +202,7 @@ public class Alumno extends Usuario implements Serializable{
     @Override
     public String toString() {
         return ("Alumno\n" + "--------------------------\n"
-                + "ID :                    " + id + "\n"
+                + "ID :                    " + this.id + "\n"
                 + "Nombres:                " + nombres + "\n"
                 + "Apellidos:              " + apellidos + "\n"
                 + "Fecha de Nacimiento:    " + fechaNacimiento + "\n"

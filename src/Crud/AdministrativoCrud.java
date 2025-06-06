@@ -13,10 +13,10 @@ public class AdministrativoCrud {
     public static HashMap<String, Administrativo> administrativos = new HashMap<>();
     
     public static void agregar (Administrativo administrativo) throws Exception {
-        if (administrativos.containsKey(administrativo.getId())) {
-            throw new Exception ("el usuario administrativo "+administrativo.getId()+" ya existe!");
+        if (administrativos.containsKey(administrativo.getId().toString().toString())) {
+            throw new Exception ("el usuario administrativo "+administrativo.getId().toString()+" ya existe!");
         }
-        administrativos.put(administrativo.getId(), administrativo );
+        administrativos.put(administrativo.getId().toString(), administrativo );
     }
 
     public static Administrativo buscar (String administrativo_id) throws Exception {
@@ -27,10 +27,10 @@ public class AdministrativoCrud {
     }
 
     public static void editar (Administrativo administrativo) throws Exception {
-        if (!administrativos.containsKey(administrativo.getId())) {
-            throw new Exception ("el usuario administrativo "+administrativo.getId()+" no existe!");
+        if (!administrativos.containsKey(administrativo.getId().toString())) {
+            throw new Exception ("el usuario administrativo "+administrativo.getId().toString()+" no existe!");
         }
-        administrativos.put(administrativo.getId(), administrativo);
+        administrativos.put(administrativo.getId().toString(), administrativo);
     }
     
     public static void eliminar (String administrativo_id) throws Exception {

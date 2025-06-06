@@ -14,10 +14,10 @@ public class BecaCrud {
     public static HashMap<String, Beca> becas = new HashMap<>();
 
     public static void agregar(Beca beca) throws Exception {
-        if (becas.containsKey(beca.getId())) {
-            throw new Exception("la beca " + beca.getId() + " ya existe!");
+        if (becas.containsKey(beca.getId().toString())) {
+            throw new Exception("la beca " + beca.getId().toString() + " ya existe!");
         }
-        becas.put(beca.getId(), beca);
+        becas.put(beca.getId().toString(), beca);
     }
 
     public static Beca buscar(String beca_id) throws Exception {
@@ -28,10 +28,10 @@ public class BecaCrud {
     }
 
     public static void editar(Beca beca) throws Exception {
-        if (!becas.containsKey(beca.getId())) {
-            throw new Exception("la beca " + beca.getId() + " no existe!");
+        if (!becas.containsKey(beca.getId().toString())) {
+            throw new Exception("la beca " + beca.getId().toString() + " no existe!");
         }
-        becas.put(beca.getId(), beca);
+        becas.put(beca.getId().toString(), beca);
     }
 
     public static void eliminar(String beca_id) throws Exception {

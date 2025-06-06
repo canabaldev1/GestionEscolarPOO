@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -22,7 +24,9 @@ import javax.persistence.OneToOne;
 public class Matricula implements Serializable {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     private LocalDateTime fechaMatricula;
     
     @Enumerated (EnumType.STRING)
@@ -55,7 +59,6 @@ public class Matricula implements Serializable {
             LocalDateTime fechaMatricula,
             Alumno alumno,
             CicloAcademico cicloAcademico) {
-        this.id = id;
         this.fechaMatricula = fechaMatricula;
         this.observaciones = "";
         this.alumno = alumno;
@@ -65,16 +68,8 @@ public class Matricula implements Serializable {
     }
 
     // GETTERS Y SETTERS
-    public String getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        if (id != null && !id.trim().isEmpty()) {
-            this.id = id;
-        } else {
-            throw new IllegalArgumentException("El ID no puede ser nulo o vacío.");
-        }
     }
 
     public LocalDateTime getFechaMatricula() {

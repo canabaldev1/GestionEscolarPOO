@@ -13,10 +13,10 @@ public class GrupoInfantilCrud {
     public static HashMap<String, GrupoInfantil> gruposInfantiles = new HashMap<>();
     
     public static void agregar (GrupoInfantil grupoInfantil) throws Exception {
-        if (gruposInfantiles.containsKey(grupoInfantil.getId())) {
-            throw new Exception ("el grupo infantil "+grupoInfantil.getId()+" ya existe!");
+        if (gruposInfantiles.containsKey(grupoInfantil.getId().toString())) {
+            throw new Exception ("el grupo infantil "+grupoInfantil.getId().toString()+" ya existe!");
         }
-        gruposInfantiles.put(grupoInfantil.getId(), grupoInfantil );
+        gruposInfantiles.put(grupoInfantil.getId().toString(), grupoInfantil );
     }
 
     public static GrupoInfantil buscar (String grupoInfantil_id) throws Exception {
@@ -27,10 +27,10 @@ public class GrupoInfantilCrud {
     }
 
     public static void editar (GrupoInfantil grupoInfantil) throws Exception {
-        if (!gruposInfantiles.containsKey(grupoInfantil.getId())) {
-            throw new Exception ("el grupo infantil "+grupoInfantil.getId()+" no existe!");
+        if (!gruposInfantiles.containsKey(grupoInfantil.getId().toString())) {
+            throw new Exception ("el grupo infantil "+grupoInfantil.getId().toString()+" no existe!");
         }
-        gruposInfantiles.put(grupoInfantil.getId(), grupoInfantil);
+        gruposInfantiles.put(grupoInfantil.getId().toString(), grupoInfantil);
     }
     
     public static void eliminar (String grupoInfantil_id) throws Exception {

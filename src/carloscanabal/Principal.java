@@ -59,6 +59,7 @@ import Dominio.ProfesorRegular;
 import Dominio.ServicioComplementario;
 import Dominio.Sesion;
 import Infraestructura.Configuracion.BD.ConexionBD;
+import Pruebas.Crud.CicloAcademicoPrueba;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -2614,9 +2615,14 @@ System.out.println("\n----- SERVICIO COMPLEMENTARIO -----\n");
 
         System.out.println("Prueba base de datos");
         
-        ConexionBD.conectar();
+        // CicloAcademicoPrueba.crearCicloAcademicoSinError();
         
-        ConexionBD.desconectar();
+        Long id = 2L;
+        
+        // CicloAcademicoPrueba.buscarYModificar(id);
+        
+        //CicloAcademicoPrueba.crearMatricula();
+        CicloAcademicoPrueba.buscarMatricula();
         
     }
 

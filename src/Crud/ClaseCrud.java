@@ -13,10 +13,10 @@ public class ClaseCrud {
     public static HashMap<String, Clase> clases = new HashMap<>();
     
     public static void agregar (Clase clase) throws Exception {
-        if (clases.containsKey(clase.getId())) {
-            throw new Exception ("la clase "+clase.getId()+" ya existe!");
+        if (clases.containsKey(clase.getId().toString())) {
+            throw new Exception ("la clase "+clase.getId().toString()+" ya existe!");
         }
-        clases.put(clase.getId(), clase );
+        clases.put(clase.getId().toString(), clase );
     }
 
     public static Clase buscar (String clase_id) throws Exception {
@@ -27,10 +27,10 @@ public class ClaseCrud {
     }
 
     public static void editar (Clase clase) throws Exception {
-        if (!clases.containsKey(clase.getId())) {
-            throw new Exception ("la clase "+clase.getId()+" no existe!");
+        if (!clases.containsKey(clase.getId().toString())) {
+            throw new Exception ("la clase "+clase.getId().toString()+" no existe!");
         }
-        clases.put(clase.getId(), clase);
+        clases.put(clase.getId().toString(), clase);
     }
     
     public static void eliminar (String clase_id) throws Exception {

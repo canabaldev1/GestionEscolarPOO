@@ -14,10 +14,10 @@ public class SesionCrud {
     public static HashMap<String, Sesion> sesiones = new HashMap<>();
 
     public static void agregar(Sesion sesion) throws Exception {
-        if (sesiones.containsKey(sesion.getId())) {
-            throw new Exception("la sesion "+sesion.getId()+" ya existe!");
+        if (sesiones.containsKey(sesion.getId().toString())) {
+            throw new Exception("la sesion "+sesion.getId().toString()+" ya existe!");
         }
-        sesiones.put(sesion.getId(), sesion);
+        sesiones.put(sesion.getId().toString(), sesion);
     }
 
     public static Sesion buscar(String sesion_id) throws Exception {
@@ -28,10 +28,10 @@ public class SesionCrud {
     }
 
     public static void editar(Sesion sesion) throws Exception {
-        if (!sesiones.containsKey(sesion.getId())) {
-            throw new Exception("la sesion "+sesion.getId()+" no existe!");
+        if (!sesiones.containsKey(sesion.getId().toString())) {
+            throw new Exception("la sesion "+sesion.getId().toString()+" no existe!");
         }
-        sesiones.put(sesion.getId(), sesion);
+        sesiones.put(sesion.getId().toString(), sesion);
     }
 
     public static void eliminar(String sesion_id) throws Exception {

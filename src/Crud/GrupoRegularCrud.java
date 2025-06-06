@@ -13,10 +13,10 @@ public class GrupoRegularCrud {
     public static HashMap<String, GrupoRegular> gruposRegulares = new HashMap<>();
     
     public static void agregar (GrupoRegular grupoRegular) throws Exception {
-        if (gruposRegulares.containsKey(grupoRegular.getId())) {
-            throw new Exception ("el grupo regular "+grupoRegular.getId()+" ya existe!");
+        if (gruposRegulares.containsKey(grupoRegular.getId().toString())) {
+            throw new Exception ("el grupo regular "+grupoRegular.getId().toString()+" ya existe!");
         }
-        gruposRegulares.put(grupoRegular.getId(), grupoRegular );
+        gruposRegulares.put(grupoRegular.getId().toString(), grupoRegular );
     }
 
     public static GrupoRegular buscar (String grupoRegular_id) throws Exception {
@@ -27,10 +27,10 @@ public class GrupoRegularCrud {
     }
 
     public static void editar (GrupoRegular grupoRegular) throws Exception {
-        if (!gruposRegulares.containsKey(grupoRegular.getId())) {
-            throw new Exception ("el grupo regular "+grupoRegular.getId()+" no existe!");
+        if (!gruposRegulares.containsKey(grupoRegular.getId().toString())) {
+            throw new Exception ("el grupo regular "+grupoRegular.getId().toString()+" no existe!");
         }
-        gruposRegulares.put(grupoRegular.getId(), grupoRegular);
+        gruposRegulares.put(grupoRegular.getId().toString(), grupoRegular);
     }
     
     public static void eliminar (String grupoRegular_id) throws Exception {

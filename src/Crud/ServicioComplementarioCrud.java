@@ -14,10 +14,10 @@ public class ServicioComplementarioCrud {
     public static HashMap<String, ServicioComplementario> serviciosComplementarios = new HashMap<>();
 
     public static void agregar(ServicioComplementario servicioComplementario) throws Exception {
-        if (serviciosComplementarios.containsKey(servicioComplementario.getId())) {
-            throw new Exception("el servicio complementario "+servicioComplementario.getId()+" ya existe!");
+        if (serviciosComplementarios.containsKey(servicioComplementario.getId().toString())) {
+            throw new Exception("el servicio complementario "+servicioComplementario.getId().toString()+" ya existe!");
         }
-        serviciosComplementarios.put(servicioComplementario.getId(), servicioComplementario);
+        serviciosComplementarios.put(servicioComplementario.getId().toString(), servicioComplementario);
     }
 
     public static ServicioComplementario buscar(String servicioComplementario_id) throws Exception {
@@ -28,10 +28,10 @@ public class ServicioComplementarioCrud {
     }
 
     public static void editar(ServicioComplementario servicioComplementario) throws Exception {
-        if (!serviciosComplementarios.containsKey(servicioComplementario.getId())) {
-            throw new Exception("el servicio complementario "+servicioComplementario.getId()+" no existe!");
+        if (!serviciosComplementarios.containsKey(servicioComplementario.getId().toString())) {
+            throw new Exception("el servicio complementario "+servicioComplementario.getId().toString()+" no existe!");
         }
-        serviciosComplementarios.put(servicioComplementario.getId(), servicioComplementario);
+        serviciosComplementarios.put(servicioComplementario.getId().toString(), servicioComplementario);
     }
 
     public static void eliminar(String servicioComplementario_id) throws Exception {

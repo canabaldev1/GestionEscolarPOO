@@ -14,10 +14,10 @@ public class ModalidadCrud {
     public static HashMap<String, Modalidad> modalidades = new HashMap<>();
 
     public static void agregar(Modalidad modalidad) throws Exception {
-        if (modalidades.containsKey(modalidad.getId())) {
-            throw new Exception("la modalidad "+modalidad.getId()+" ya existe!");
+        if (modalidades.containsKey(modalidad.getId().toString())) {
+            throw new Exception("la modalidad "+modalidad.getId().toString()+" ya existe!");
         }
-        modalidades.put(modalidad.getId(), modalidad);
+        modalidades.put(modalidad.getId().toString(), modalidad);
     }
 
     public static Modalidad buscar(String modalidad_id) throws Exception {
@@ -28,10 +28,10 @@ public class ModalidadCrud {
     }
 
     public static void editar(Modalidad modalidad) throws Exception {
-        if (!modalidades.containsKey(modalidad.getId())) {
-            throw new Exception("la modalidad "+modalidad.getId()+" no existe!");
+        if (!modalidades.containsKey(modalidad.getId().toString())) {
+            throw new Exception("la modalidad "+modalidad.getId().toString()+" no existe!");
         }
-        modalidades.put(modalidad.getId(), modalidad);
+        modalidades.put(modalidad.getId().toString(), modalidad);
     }
 
     public static void eliminar(String modalidad_id) throws Exception {

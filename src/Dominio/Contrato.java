@@ -11,6 +11,8 @@ import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -20,24 +22,25 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class Contrato implements Serializable {
-    
+
     @Id
-    private String id;
-    
-    @Enumerated (EnumType.STRING)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Enumerated(EnumType.STRING)
     private TipoContrato tipo;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private int valorSalario;
-    
-    @Enumerated (EnumType.STRING)
+
+    @Enumerated(EnumType.STRING)
     private EstadoContrato estado;
     private String observaciones;
     private String cargo;
-    
+
     @ManyToOne
     private Empleado empleado;
-    
+
     @ManyToOne
     private CicloAcademico cicloAcademico;
 
@@ -54,7 +57,6 @@ public class Contrato implements Serializable {
             int valorSalario,
             Empleado empleado,
             CicloAcademico cicloAcademico) {
-        this.id = id;
         this.tipo = tipo;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
@@ -66,16 +68,8 @@ public class Contrato implements Serializable {
     }
 
     // GETTERS Y SETTERS
-    public String getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        if (id != null && !id.trim().isEmpty()) {
-            this.id = id;
-        } else {
-            throw new IllegalArgumentException("El ID no puede ser nulo o vacío.");
-        }
     }
 
     public TipoContrato getTipo() {

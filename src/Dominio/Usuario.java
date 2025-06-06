@@ -6,8 +6,9 @@ package Dominio;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -20,21 +21,17 @@ import javax.persistence.InheritanceType;
 @Inheritance(strategy = InheritanceType.JOINED)
 
 public abstract class Usuario implements Serializable {
-    @Id 
-    @Column (name= "id", length = 10, nullable = false, unique = true)
-    protected String id;
-    @Column (length = 50, nullable = false)
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
+    
     protected String nombres;
-    @Column (length = 50, nullable = false)
     protected String apellidos;
     protected LocalDate fechaNacimiento;
-    @Column (length = 20, nullable = false)
     protected String contrasena;
-    @Column (length = 20)
     protected String direccion;
-    @Column (length = 50, nullable = false, unique = true)
     protected String email;
-    @Column (length = 20)
     protected String telefono;
 
     // CONSTRUCTORES
@@ -44,12 +41,10 @@ public abstract class Usuario implements Serializable {
     ;
   
   public Usuario(
-            String id,
             String nombres,
             String apellidos,
             String contrasena,
             String email) {
-        this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.contrasena = contrasena;
@@ -57,16 +52,8 @@ public abstract class Usuario implements Serializable {
     }
 
     // GETTERS Y SETTERS
-    public String getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        if (id != null && !id.trim().isEmpty()) {
-            this.id = id;
-        } else {
-            throw new IllegalArgumentException("El ID no puede estar vacío.");
-        }
     }
 
     public String getNombres() {

@@ -9,9 +9,12 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -23,7 +26,9 @@ import javax.persistence.OneToMany;
 public class CicloAcademico implements Serializable {
     
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
     private int anio;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
@@ -33,19 +38,19 @@ public class CicloAcademico implements Serializable {
     
     private int cantidadSemanas;
     
-    @OneToMany (mappedBy = "cicloAcademico")
+    @OneToMany (mappedBy = "cicloAcademico", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Matricula> matriculas;
     
-    @OneToMany (mappedBy = "cicloAcademico")
+    @OneToMany (mappedBy = "cicloAcademico", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Contrato> contratos;
     
-    @OneToMany (mappedBy = "cicloAcademico")
+    @OneToMany (mappedBy = "cicloAcademico", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Grupo> grupos;
     
-    @OneToMany (mappedBy = "cicloAcademico")
+    @OneToMany (mappedBy = "cicloAcademico", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Clase> clases;
     
-    @OneToMany (mappedBy = "cicloAcademico")
+    @OneToMany (mappedBy = "cicloAcademico", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ServicioComplementario> serviciosComplementarios;
 
     // CONSTRUCTORES
@@ -61,7 +66,6 @@ public class CicloAcademico implements Serializable {
             String id,
             int anio,
             int cantidadSemanas) {
-        this.id = id;
         this.anio = anio;
         this.estado = EstadoCicloAcademico.EN_PROYECCION;
         this.cantidadSemanas = cantidadSemanas;
@@ -73,15 +77,8 @@ public class CicloAcademico implements Serializable {
     }
 
     // GETTERS Y SETTERS
-    public String getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        if (id == null || id.trim().isEmpty()) {
-            throw new IllegalArgumentException("El ID no puede ser nulo o vacío.");
-        }
-        this.id = id;
     }
 
     public int getAnio() {
