@@ -86,7 +86,7 @@ public class CicloAcademicoCrudBD {
     }
 
     // ELIMINAR
-    public void eliminar(String id) throws Exception {
+    public void eliminar(Long id) throws Exception {
         EntityManager entityManager = null;
         EntityTransaction transaccion = null;
 

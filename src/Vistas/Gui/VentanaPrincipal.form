@@ -1,0 +1,1092 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
+      <SubComponents>
+        <Menu class="javax.swing.JMenu" name="categoriaUsuario">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Usuarios"/>
+          </Properties>
+          <SubComponents>
+            <Menu class="javax.swing.JMenu" name="menuAlumno">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Alumno"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menuAlumnoMouseClicked"/>
+              </Events>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="itemAgregarAlumno">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Agregar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="itemAgregarAlumnoMouseClicked"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioAlumno"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemBuscarAlumno">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Buscar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioAlumno"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEditarAlumno">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Modificar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioAlumno"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEliminarAlumno">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioAlumno"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator3">
+                </MenuItem>
+                <Menu class="javax.swing.JMenu" name="subMenuReportesAlumno">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Reportes"/>
+                  </Properties>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorNombreAlumno">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por nombre"/>
+                      </Properties>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorIdAlumno">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por id"/>
+                      </Properties>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="menuAdministrativo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Administrativo"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="itemAgregarAdministrativo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Agregar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioAdministrativo"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemBuscarAdministrativo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Buscar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioAdministrativo"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEditarAdministrativo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Modificar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioAdministrativo"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEliminarAdministrativo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioAdministrativo"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator4">
+                </MenuItem>
+                <Menu class="javax.swing.JMenu" name="subMenuReportesAdministrativo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Reportes"/>
+                  </Properties>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorNombreAdministrativo">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por nombre"/>
+                      </Properties>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorIdAdministrativo">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por id"/>
+                      </Properties>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="menuProfesorRegular">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Profesor Regular"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="itemAgregarProfesorRegular">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Agregar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioProfesorRegular"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemBuscarProfesorRegular">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Buscar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioProfesorRegular"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEditarProfesorRegular">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Modificar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioProfesorRegular"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEliminarProfesorRegular">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioProfesorRegular"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator5">
+                </MenuItem>
+                <Menu class="javax.swing.JMenu" name="subMenuReportesProfesorRegular">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Reportes"/>
+                  </Properties>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorNombreProfesorRegular">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por nombre"/>
+                      </Properties>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorIdProfesorRegular">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por id"/>
+                      </Properties>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="menuProfesorInfantil">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Profesor Infantil"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="itemAgregarProfesorInfantil">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Agregar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioProfesorInfantil"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemBuscarProfesorInfantil">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Buscar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioProfesorInfantil"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEditarProfesorInfantil">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Modificar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioProfesorInfantil"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEliminarProfesorInfantil">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioProfesorInfantil"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator6">
+                </MenuItem>
+                <Menu class="javax.swing.JMenu" name="subMenuReportesProfesorInfantil">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Reportes"/>
+                  </Properties>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorNombreProfesorInfantil">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por nombre"/>
+                      </Properties>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorIdProfesorInfantil">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por id"/>
+                      </Properties>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
+              </SubComponents>
+            </Menu>
+            <MenuItem class="javax.swing.JMenuItem" name="itemLoginUsuario">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Iniciar sesion"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemLoginUsuarioActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itemRecordarClaveUsuario">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Recordar password"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemRecordarClaveUsuarioActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itemCambiarClaveUsuario">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cambiar password"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itemSalirUsuario">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Salir"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="categoriaVinculacion">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Vinculaci&#xf3;n"/>
+          </Properties>
+          <SubComponents>
+            <Menu class="javax.swing.JMenu" name="menuMatricula">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Matricula"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="itemAgregarMatricula">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Agregar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemBuscarMatricula">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Buscar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEditarMatricula">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Modificar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEliminarMatricula">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator7">
+                </MenuItem>
+                <Menu class="javax.swing.JMenu" name="subMenuReportesMatricula">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Reportes"/>
+                  </Properties>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorEstudianteMatricula">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por nombre"/>
+                      </Properties>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorIdMatricula">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por id"/>
+                      </Properties>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="menuBeca">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Beca"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="itemAgregarBeca">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Agregar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemBuscarBeca">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Buscar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEditarBeca">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Modificar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEliminarBeca">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator8">
+                </MenuItem>
+                <Menu class="javax.swing.JMenu" name="subMenuReportesBeca">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Reportes"/>
+                  </Properties>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorNombreBeca">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por nombre"/>
+                      </Properties>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorIdBeca">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por id"/>
+                      </Properties>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
+              </SubComponents>
+            </Menu>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator2">
+            </MenuItem>
+            <Menu class="javax.swing.JMenu" name="menuContrato">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Contrato"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="itemAgregarContrato">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Agregar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemBuscarContrato">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Buscar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEditarContrato">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Modificar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEliminarContrato">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator9">
+                </MenuItem>
+                <Menu class="javax.swing.JMenu" name="subMenuReportesContrato">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Reportes"/>
+                  </Properties>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorNombreContrato">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por nombre"/>
+                      </Properties>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorIdContrato">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por id"/>
+                      </Properties>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
+              </SubComponents>
+            </Menu>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="categoriaAdministracion">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Administraci&#xf3;n"/>
+          </Properties>
+          <SubComponents>
+            <Menu class="javax.swing.JMenu" name="menuCicloAcademico">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ciclo Academico"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="itemAgregarCicloAcademico">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Agregar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioCicloAcademico"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemBuscarCicloAcademico">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Buscar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioCicloAcademico"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEditarCicloAcademico">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Modificar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioCicloAcademico"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEliminarCicloAcademico">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioCicloAcademico"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator10">
+                </MenuItem>
+                <Menu class="javax.swing.JMenu" name="subMenuReportesCicloAcademico">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Reportes"/>
+                  </Properties>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorAnioCicloAcademico">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por nombre"/>
+                      </Properties>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorIdCicloAcademico">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por id"/>
+                      </Properties>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="menuServicioComplementario">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Servicio Complementario"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="itemAgregarServicioComplementario">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Agregar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemBuscarServicioComplementario">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Buscar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEditarServicioComplementario">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Modificar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEliminarServicioComplementario">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator11">
+                </MenuItem>
+                <Menu class="javax.swing.JMenu" name="subMenuReportesServicioComplementario">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Reportes"/>
+                  </Properties>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorNombreServicioComplementario">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por nombre"/>
+                      </Properties>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorIdServicioComplementario">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por id"/>
+                      </Properties>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
+              </SubComponents>
+            </Menu>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="categoriaOrganizacion">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Organizaci&#xf3;n"/>
+          </Properties>
+          <SubComponents>
+            <Menu class="javax.swing.JMenu" name="menuAsignatura">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Asignatura"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="itemAgregarAsignatura">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Agregar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioAsignatura"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemBuscarAsignatura">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Buscar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioAsignatura"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEditarAsignatura">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Modificar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioAsignatura"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEliminarAsignatura">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioAsignatura"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator12">
+                </MenuItem>
+                <Menu class="javax.swing.JMenu" name="subMenuReportesAsignatura">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Reportes"/>
+                  </Properties>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorNombreAsignatura">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por nombre"/>
+                      </Properties>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorIdAsignatura">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por id"/>
+                      </Properties>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="menuClase">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Clase"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="itemAgregarClase">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Agregar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemBuscarClase">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Buscar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEditarClase">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Modificar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEliminarClase">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator13">
+                </MenuItem>
+                <Menu class="javax.swing.JMenu" name="subMenuReportesClase">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Reportes"/>
+                  </Properties>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorNombreClase">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por nombre"/>
+                      </Properties>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorIdClase">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por id"/>
+                      </Properties>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="menuSesion">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Sesion"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="itemAgregarSesion">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Agregar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemBuscarSesion">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Buscar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEditarSesion">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Modificar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEliminarSesion">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator14">
+                </MenuItem>
+                <Menu class="javax.swing.JMenu" name="subMenuReportesSesion">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Reportes"/>
+                  </Properties>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorNombreSesion">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por nombre"/>
+                      </Properties>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorIdSesion">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por id"/>
+                      </Properties>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="menuBloqueHorario">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bloque Horario"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="itemAgregarBloqueHorario">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Agregar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemBuscarBloqueHorario">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Buscar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEditarBloqueHorario">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Modificar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEliminarBloqueHorario">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator15">
+                </MenuItem>
+                <Menu class="javax.swing.JMenu" name="subMenuReportesBloqueHorario">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Reportes"/>
+                  </Properties>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorNombreBloqueHorario">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por nombre"/>
+                      </Properties>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorIdBloqueHorario">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por id"/>
+                      </Properties>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="menuAula">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Aula"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="itemAgregarAula">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Agregar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioAula"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemBuscarAula">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Buscar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioAula"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEditarAula">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Modificar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioAula"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEliminarAula">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioAula"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator16">
+                </MenuItem>
+                <Menu class="javax.swing.JMenu" name="subMenuReportesAula">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Reportes"/>
+                  </Properties>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorNombreAula">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por nombre"/>
+                      </Properties>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorIdAula">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por id"/>
+                      </Properties>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
+              </SubComponents>
+            </Menu>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
+            </MenuItem>
+            <Menu class="javax.swing.JMenu" name="menuNivelEducativo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nivel Educativo"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="itemAgregarNivelEducativo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Agregar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioNivelEducativo"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemBuscarNivelEducativo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Buscar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioNivelEducativo"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEditarNivelEducativo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Modificar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioNivelEducativo"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEliminarNivelEducativo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioNivelEducativo"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator17">
+                </MenuItem>
+                <Menu class="javax.swing.JMenu" name="subMenuReportesNivelEducativo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Reportes"/>
+                  </Properties>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorNombreNivelEducativo">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por nombre"/>
+                      </Properties>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorIdNivelEducativo">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por id"/>
+                      </Properties>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="menuModalidad">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Modalidad"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="itemAgregarModalidad">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Agregar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioModalidad"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemBuscarModalidad">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Buscar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEditarModalidad">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Modificar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEliminarModalidad">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator18">
+                </MenuItem>
+                <Menu class="javax.swing.JMenu" name="subMenuReportesModalidad">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Reportes"/>
+                  </Properties>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorNombreModalidad">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por nombre"/>
+                      </Properties>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorIdModalidad">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por id"/>
+                      </Properties>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="menuCurso">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Curso"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="itemAgregarCurso">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Agregar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioCurso"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemBuscarCurso">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Buscar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioCurso"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEditarCurso">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Modificar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioCurso"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEliminarCurso">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar..."/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FormularioCurso"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator19">
+                </MenuItem>
+                <Menu class="javax.swing.JMenu" name="subMenuReportesCurso">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Reportes"/>
+                  </Properties>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorNombreCurso">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por nombre"/>
+                      </Properties>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorIdCurso">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por id"/>
+                      </Properties>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="menuGrupoInfantil">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Grupo Infantil"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="itemAgregarGrupoInfantil">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Agregar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemBuscarGrupoInfantil">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Buscar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEditarGrupoInfantil">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Modificar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEliminarGrupoInfantil">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator20">
+                </MenuItem>
+                <Menu class="javax.swing.JMenu" name="subMenuReportesGrupoInfantil">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Reportes"/>
+                  </Properties>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorNombreGrupoInfantil">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por nombre"/>
+                      </Properties>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorIdGrupoInfantil">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por id"/>
+                      </Properties>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="menuGrupoRegular">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Grupo Regular"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="itemAgregarGrupoRegular">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Agregar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemBuscarGrupoRegular">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Buscar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEditarGrupoRegular">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Modificar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="itemEliminarGrupoRegular">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar..."/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator21">
+                </MenuItem>
+                <Menu class="javax.swing.JMenu" name="subMenuReportesGrupoRegular">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Reportes"/>
+                  </Properties>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorNombreGrupoRegular">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por nombre"/>
+                      </Properties>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorIdGrupoRegular">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Buscar por id"/>
+                      </Properties>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
+              </SubComponents>
+            </Menu>
+          </SubComponents>
+        </Menu>
+      </SubComponents>
+    </Menu>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
+  </Events>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <EmptySpace min="0" pref="1020" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <EmptySpace min="0" pref="666" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+</Form>

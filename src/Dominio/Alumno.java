@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.OneToMany;
 
 /**
@@ -21,7 +23,10 @@ public class Alumno extends Usuario implements Serializable{
 
     private String nombreAcudiente;
     private String apellidoAcudiente;
+    
+    @Enumerated(EnumType.STRING)
     private ParentescoAcudiente parentesco;
+    
     @OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Matricula> matriculas;
 
@@ -48,7 +53,6 @@ public class Alumno extends Usuario implements Serializable{
     }
 
     public Alumno(
-            String id,
             String nombres,
             String apellidos,
             String contrasena,

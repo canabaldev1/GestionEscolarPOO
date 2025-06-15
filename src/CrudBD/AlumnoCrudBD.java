@@ -36,7 +36,7 @@ public class AlumnoCrudBD {
             if (transaccion != null && transaccion.isActive()) {
                 transaccion.rollback();
             }
-            throw new Exception("Error al guardar alumno " + alumno.getId() + ": " + e.getMessage(), e);
+            throw new Exception("Error al guardar alumno " + alumno.getNombres()+ ": " + e.getMessage(), e);
         } finally {
             if (entityManager != null && entityManager.isOpen()) {
                 entityManager.close();
@@ -86,7 +86,7 @@ public class AlumnoCrudBD {
     }
 
     // ELIMINAR
-    public void eliminar(String id) throws Exception {
+    public void eliminar(Long id) throws Exception {
         EntityManager entityManager = null;
         EntityTransaction transaccion = null;
 

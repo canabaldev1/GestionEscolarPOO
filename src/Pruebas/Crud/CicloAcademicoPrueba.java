@@ -6,6 +6,7 @@ import Dominio.CicloAcademico;
 import Dominio.Constantes.EstadoCicloAcademico;
 import Dominio.Matricula;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  *
@@ -96,6 +97,20 @@ public class CicloAcademicoPrueba {
         } catch (Exception e) {
 
             System.err.println("Error al crear matricula: " + e.getMessage());
+
+        }
+
+    }
+
+    public static void listarTodo() {
+        try {
+            CicloAcademicoCrudBD cicloAcademicoCrudBD = new CicloAcademicoCrudBD();
+
+            List<CicloAcademico> todos = cicloAcademicoCrudBD.listarTodos();
+
+            System.out.println("Todos los ciclos:\n" + todos);
+
+        } catch (Exception e) {
 
         }
 
